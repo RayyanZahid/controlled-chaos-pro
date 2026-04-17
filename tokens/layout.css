@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Layout — primitives, not preset modes.
+
+   PRO philosophy: v1 named grid systems (grid-swiss, grid-asymmetric,
+   grid-editorial). PRO provides the primitives and expects the generator
+   to compose them per persona.
+
+   Contains: container, grid, flex, flow, spacing, and one composition
+   helper (comp-overlap) for intentional element stacking.
+   ========================================================================== */
+
+:root {
+  /* Spacing scale — all multiplied by --force-space-scale */
+  --space-3xs: calc(0.25rem * var(--force-space-scale, 1));
+  --space-2xs: calc(0.5rem * var(--force-space-scale, 1));
+  --space-xs: calc(0.75rem * var(--force-space-scale, 1));
+  --space-s: calc(1rem * var(--force-space-scale, 1));
+  --space-m: calc(1.5rem * var(--force-space-scale, 1));
+  --space-l: calc(2.5rem * var(--force-space-scale, 1));
+  --space-xl: calc(4rem * var(--force-space-scale, 1));
+  --space-2xl: calc(6rem * var(--force-space-scale, 1));
+  --space-3xl: calc(9rem * var(--force-space-scale, 1));
+  --space-4xl: calc(14rem * var(--force-space-scale, 1));
+
+  /* Gutter — page edge padding, fluid */
+  --gutter: clamp(1.5rem, 3vw, 4rem);
+
+  /* Container widths */
+  --container-narrow: 640px;
+  --container-regular: 960px;
+  --container-wide: 1200px;
+  --container-max: 1600px;
+}
+
+/* ---- Box reset ---- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, video, svg, picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Container primitives ---- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-regular);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container-narrow { max-width: var(--container-narrow); }
+.container-wide { max-width: var(--container-wide); }
+.container-max { max-width: var(--container-max); }
+.container-fluid { max-width: none; padding-inline: var(--gutter); }
+
+/* ---- Grid primitives ---- */
+
+.grid {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.grid-6 { grid-template-columns: repeat(6, 1fr); }
+.grid-12 { grid-template-columns: repeat(12, 1fr); }
+.grid-auto { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+
+/* Near-symmetric 3-column (middle is 1.15× sides) — Axiom II */
+.grid-near-sym {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: var(--space-m);
+}
+
+/* Editorial: 2/3 + 1/3 */
+.grid-editorial {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-l);
+}
+
+/* Asymmetric hero: 7/5 split */
+.grid-asym-hero {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-l);
+}
+
+/* ---- Grid span helpers ---- */
+
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-6 { grid-column: span 6; }
+.col-8 { grid-column: span 8; }
+.col-12 { grid-column: span 12; }
+.col-full { grid-column: 1 / -1; }
+
+/* ---- Flex primitives ---- */
+
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* ---- Flow — stack with consistent vertical spacing ---- */
+
+.flow > * + * {
+  margin-top: var(--flow-gap, var(--space-m));
+}
+
+.flow-tight { --flow-gap: var(--space-s); }
+.flow-loose { --flow-gap: var(--space-l); }
+.flow-dramatic { --flow-gap: var(--space-2xl); }
+
+/* ---- Gap ---- */
+
+.gap-3xs { gap: var(--space-3xs); }
+.gap-2xs { gap: var(--space-2xs); }
+.gap-xs { gap: var(--space-xs); }
+.gap-s { gap: var(--space-s); }
+.gap-m { gap: var(--space-m); }
+.gap-l { gap: var(--space-l); }
+.gap-xl { gap: var(--space-xl); }
+
+/* ---- Section — vertical rhythm ---- */
+
+.section {
+  padding-block: var(--space-2xl);
+}
+
+.section-hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-3xl);
+}
+
+.section-breath {
+  padding-block: var(--space-3xl);
+}
+
+/* ---- Composition: overlap (for Weingart-style stacking) ---- */
+
+.comp-overlap {
+  position: relative;
+}
+
+.comp-overlap > * {
+  position: absolute;
+}
+
+.comp-overlap > :first-child {
+  position: relative;
+}
+
+/* ---- Responsive adjustments ---- */
+
+@media (max-width: 768px) {
+  .grid-12, .grid-6, .grid-near-sym, .grid-editorial, .grid-asym-hero {
+    grid-template-columns: 1fr;
+  }
+  [class*="col-"] {
+    grid-column: 1 / -1;
+  }
+}

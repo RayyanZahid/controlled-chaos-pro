@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Forces — continuous spectrums that derive every downstream value.
+
+   A composition is a position on 5 spectrums (0 to 1). Setting the forces
+   automatically derives spacing, radius, tracking, motion duration,
+   border weight, contrast — via calc() without additional CSS.
+
+   PRO note: v1's named presets (kinetic, brutalist, swiss, etc.) are
+   intentionally removed. Forces are set PER-COMPOSITION on <html> by the
+   generator, based on the subject and chosen persona — never from a menu.
+   ========================================================================== */
+
+:root {
+  /* ---- The 5 spectrums (0 = left pole, 1 = right pole) ---- */
+
+  /* Structure ↔ Disruption
+     0 = pure chaos (Weingart violation zone)
+     1 = rigid grid (Swiss, Rams) */
+  --force-structure: 0.5;
+
+  /* Density ↔ Breath
+     0 = airy editorial space (Saville)
+     1 = packed information density */
+  --force-density: 0.5;
+
+  /* Warmth ↔ Edge
+     0 = cold/mechanical (Rams)
+     1 = organic/human (Saville, Bierut) */
+  --force-warmth: 0.5;
+
+  /* Stillness ↔ Motion
+     0 = kinetic (Weingart)
+     1 = monumental calm (Rams, Saville) */
+  --force-stillness: 0.5;
+
+  /* Whisper ↔ Shout
+     0 = barely there (Rams)
+     1 = maximum volume (Scher, Weingart) */
+  --force-volume: 0.5;
+
+  /* ---- Derived values — recalculate automatically when forces change ---- */
+
+  /* Spacing scale (density inverse — airy = larger spaces) */
+  --force-space-scale: calc(1 + (1 - var(--force-density)) * 0.75);
+
+  /* Border radius (warmth — cold = sharp, warm = rounded) */
+  --force-radius-base: calc(var(--force-warmth) * 8px);
+  --force-radius-lg: calc(var(--force-warmth) * 16px);
+
+  /* Letter tracking (volume inverse — whisper = loose, shout = tight) */
+  --force-tracking-body: calc((1 - var(--force-volume)) * 0.02em);
+  --force-tracking-display: calc(-0.02em - var(--force-volume) * 0.03em);
+
+  /* Motion duration scale (stillness — kinetic = fast, monumental = slow) */
+  --force-motion-scale: calc(0.4 + var(--force-stillness) * 1.4);
+
+  /* Border weight (structure — chaos = hairline, rigid = heavy) */
+  --force-border-weight: calc(0.5px + var(--force-structure) * 1.5px);
+
+  /* Line height (density inverse — airy = loose, packed = tight) */
+  --force-leading: calc(1.2 + (1 - var(--force-density)) * 0.4);
+
+  /* Hierarchy compression (volume — whisper = flat, shout = dramatic scale jumps) */
+  --force-hierarchy: calc(1 + var(--force-volume) * 1.5);
+}
+
+/* Reduced motion — scale all force-derived durations to instant */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --force-motion-scale: 0.01;
+  }
+}

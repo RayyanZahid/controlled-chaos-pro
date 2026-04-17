@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en" style="
+  --force-structure: 0.82;
+  --force-density: 0.3;
+  --force-warmth: 0.65;
+  --force-stillness: 0.95;
+  --force-volume: 0.3;
+">
+<head>
+  <meta charset="utf-8">
+  <title>FAC 75 — A Saville-mode tribute · Controlled Chaos PRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Validation page for Controlled Chaos PRO. Saville-mode applied to a Factory Records tribute. Palette derived from Fantin-Latour's A Basket of Roses (1890).">
+
+  <!--
+    PERSONA: Saville — source-before-style
+    SUBJECT: Factory Records / Peter Saville's own design method
+    ANCHOR:  Henri Fantin-Latour, A Basket of Roses (1890). Public domain.
+             The painting Saville used for FAC 75 (Power, Corruption & Lies).
+
+    PALETTE DERIVATION: sampled directly from the anchor.
+    TYPE ERA:           Neue Haas Grotesk + Bembo (1983 contemporaries).
+    MOTION CATEGORY:    Ambient only — slow fade-ins. No punctuating. Saville is still.
+    MICROFEATURE:       Editorial caption typography (small-caps eyebrows, italic pulled captions).
+    DISCORD (Axiom II): one Weingart-rotated section for FAC 73 (Blue Monday).
+                        Load-bearing because Saville himself broke his own editorial
+                        rules on Blue Monday (the die-cut floppy disk sleeve).
+  -->
+
+  <style>
+    :root {
+      /* Subject-derived palette — extracted from A Basket of Roses, not picked from menu */
+      --color-bg: #ede5d0;       /* sleeve cream — the canvas ground */
+      --color-fg: #2b2f24;       /* stem dark — oil paint shadow */
+      --color-accent: #b0776e;   /* dusty rose — the flowers */
+      --color-muted: #847d6c;    /* warm grey — aged shadow */
+      --color-subtle: rgba(43, 47, 36, 0.08);
+      --color-surface: rgba(176, 119, 110, 0.05);
+      --color-border: rgba(43, 47, 36, 0.2);
+      --color-discord: #0a0a0a;  /* Blue Monday black — the violation */
+
+      /* Era-specific pairing: 1983 Neue Haas Grotesk + Bembo */
+      --font-display: "Helvetica Neue", "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      --font-body: "Iowan Old Style", "Bembo", "Hoefler Text", Georgia, serif;
+      --font-accent: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+    }
+  </style>
+
+  <link rel="stylesheet" href="../../tokens/forces.css">
+  <link rel="stylesheet" href="../../tokens/color.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/layout.css">
+  <link rel="stylesheet" href="../../tokens/motion.css">
+
+  <style>
+    /* Subject-specific compositions — inline because they don't generalize */
+    body {
+      background: var(--color-bg);
+      color: var(--color-fg);
+    }
+
+    /* Hairline rule — editorial signature */
+    .hairline {
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-s);
+    }
+
+    /* Catalog row */
+    .cat-row {
+      display: grid;
+      grid-template-columns: 6rem 1fr auto;
+      gap: var(--space-m);
+      padding-block: var(--space-m);
+      border-top: 1px solid var(--color-border);
+      align-items: baseline;
+    }
+    .cat-row:last-child {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* The violation — Weingart section */
+    .violation {
+      background: var(--color-discord);
+      color: var(--color-bg);
+      padding-block: var(--space-3xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .violation__stack {
+      position: relative;
+      min-height: 50vh;
+    }
+
+    .violation__monday {
+      font-family: var(--font-display);
+      font-size: var(--type-civic);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+      text-transform: uppercase;
+      color: var(--color-bg);
+      margin: 0;
+    }
+
+    .violation__quote {
+      position: absolute;
+      top: 45%;
+      left: 8%;
+      max-width: 22ch;
+      transform: rotate(-6deg);
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: var(--type-subhead);
+      line-height: 1.15;
+      color: var(--color-accent);
+      margin: 0;
+    }
+
+    /* Hero anchor figure */
+    .anchor-figure {
+      aspect-ratio: 4/5;
+      background:
+        linear-gradient(135deg, rgba(43, 47, 36, 0.1), rgba(176, 119, 110, 0.08)),
+        url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Henri_Fantin-Latour_002.jpg/600px-Henri_Fantin-Latour_002.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Signature: editorial caption microfeature */
+    figcaption, .caption {
+      font-family: var(--font-body);
+      font-size: var(--type-caption);
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--color-muted);
+    }
+
+    /* Small-caps eyebrows — Saville microfeature */
+    .eyebrow {
+      font-family: var(--font-accent);
+      font-size: var(--type-caption);
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    /* Respect the floor */
+    @media (max-width: 700px) {
+      .violation__quote {
+        position: static;
+        transform: none;
+        margin-top: var(--space-l);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== HERO ========== -->
+  <section class="section-hero container container-wide">
+    <div class="flow flow-loose">
+      <p class="eyebrow m-reveal">Factory Communications · FAC 75 · 1983</p>
+
+      <h1 class="m-reveal" style="
+        font-family: var(--font-display);
+        font-size: var(--type-massive);
+        font-weight: 300;
+        letter-spacing: -0.03em;
+        line-height: 0.95;
+        max-width: 14ch;
+      ">
+        Power,<br>
+        Corruption
+        <em style="font-family: var(--font-body); font-weight: 400; color: var(--color-accent); font-style: italic;">&amp;</em><br>
+        Lies.
+      </h1>
+
+      <p class="t-body t-italic t-measure-body m-reveal" style="color: var(--color-muted); font-size: var(--type-lede);">
+        A tribute to Peter Saville, for the sleeve that codified the method: the painting found the concept before the concept found the painting.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== THE ANCHOR ========== -->
+  <section class="section container container-wide">
+    <div class="grid-editorial gap-xl">
+      <div class="flow m-reveal">
+        <p class="eyebrow">The anchor</p>
+        <h2 style="
+          font-family: var(--font-body);
+          font-style: italic;
+          font-size: var(--type-subhead);
+          line-height: 1.15;
+          max-width: 22ch;
+        ">
+          A painting, 1890. A record sleeve, 1983. Nothing in between — only recognition.
+        </h2>
+        <p class="t-body t-measure-body" style="line-height: 1.7; margin-top: var(--space-l);">
+          Peter Saville saw Henri Fantin-Latour's <em>A Basket of Roses</em> at the National Gallery. The flowers, he said,
+          suggested <em>"the means by which power, corruption, and lies infiltrate our lives — they're seductive,
+          colourful, fleeting, corruptible."</em>
+        </p>
+        <p class="t-body t-measure-body" style="line-height: 1.7;">
+          The sleeve became the painting. The band name appeared only on the back, in a colour-coded block.
+          No type on the front. No treatment. Saville found what the record was about before he designed anything.
+        </p>
+        <p class="hairline caption" style="margin-top: var(--space-xl);">
+          This page applies the same method. The palette is sampled from the painting. The typography is 1983.
+          Everything else is restraint.
+        </p>
+      </div>
+
+      <figure class="m-reveal">
+        <div class="anchor-figure" role="img" aria-label="Henri Fantin-Latour, A Basket of Roses, 1890"></div>
+        <figcaption style="margin-top: var(--space-s);">
+          Henri Fantin-Latour, <em>A Basket of Roses</em>, 1890. Oil on canvas, 49 × 60cm. National Gallery, London.
+          <br>— the anchor for FAC 75.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ========== QUOTE ========== -->
+  <section class="section container container-regular">
+    <blockquote class="m-reveal" style="
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: var(--type-subhead);
+      line-height: 1.25;
+      max-width: 38ch;
+      margin: 0 auto;
+      padding-left: 3ch;
+      border-left: 2px solid var(--color-accent);
+    ">
+      "Flowers suggested the means by which power, corruption, and lies infiltrate our lives — they're seductive,
+      colourful, fleeting, corruptible. So I used a painting of roses."
+      <cite style="
+        display: block;
+        margin-top: var(--space-m);
+        font-family: var(--font-accent);
+        font-size: var(--type-caption);
+        font-style: normal;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+      ">
+        — Peter Saville
+      </cite>
+    </blockquote>
+  </section>
+
+  <!-- ========== THE CATALOG ========== -->
+  <section class="section container container-wide">
+    <div class="flow">
+      <p class="eyebrow m-reveal">Selected catalog</p>
+      <h2 class="m-reveal" style="
+        font-family: var(--font-display);
+        font-size: var(--type-headline);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        margin-top: var(--space-s);
+      ">
+        Factory, 1978&ndash;1992.
+      </h2>
+
+      <ol class="m-stagger" style="list-style: none; padding: 0; margin-top: var(--space-xl);">
+        <li class="cat-row">
+          <span class="eyebrow">FAC 001</span>
+          <span class="t-body t-italic">A Factory Sample</span>
+          <span class="caption">1978</span>
+        </li>
+        <li class="cat-row">
+          <span class="eyebrow">FAC 10</span>
+          <span class="t-body t-italic">Unknown Pleasures &mdash; Joy Division</span>
+          <span class="caption">1979</span>
+        </li>
+        <li class="cat-row">
+          <span class="eyebrow">FAC 73</span>
+          <span class="t-body t-italic">Blue Monday &mdash; New Order</span>
+          <span class="caption">1983</span>
+        </li>
+        <li class="cat-row">
+          <span class="eyebrow">FAC 75</span>
+          <span class="t-body t-italic" style="color: var(--color-accent);">
+            Power, Corruption &amp; Lies &mdash; New Order
+          </span>
+          <span class="caption">1983</span>
+        </li>
+        <li class="cat-row">
+          <span class="eyebrow">FAC 301</span>
+          <span class="t-body t-italic">Technique &mdash; New Order</span>
+          <span class="caption">1989</span>
+        </li>
+        <li class="cat-row">
+          <span class="eyebrow">FAC 424</span>
+          <span class="t-body t-italic">Republic &mdash; New Order</span>
+          <span class="caption">1993</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ========== THE VIOLATION (Axiom II discord — Weingart-mode) ========== -->
+  <section class="violation">
+    <div class="container container-wide">
+      <p class="eyebrow m-reveal" style="color: var(--color-accent);">The violation · FAC 73</p>
+      <div class="violation__stack m-reveal">
+        <h2 class="violation__monday">
+          Blue<br>
+          Monday
+        </h2>
+        <p class="violation__quote">
+          the sleeve was a floppy disk. the violation was the form.
+        </p>
+      </div>
+      <p class="caption m-reveal" style="color: var(--color-accent); margin-top: var(--space-xl); max-width: 60ch;">
+        Saville designed FAC 73 as a 5¼″ floppy disk with die-cut holes. Factory lost money on every copy sold.
+        The violation of the editorial method was load-bearing: <em>Blue Monday</em> was about the form of the object,
+        not the content on it. Saville broke his own rule because the song demanded it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== END ========== -->
+  <section class="section container container-narrow">
+    <div class="flow-loose" style="padding-block: var(--space-2xl); text-align: center;">
+      <p class="eyebrow m-reveal">End</p>
+      <p class="m-reveal" style="
+        font-family: var(--font-body);
+        font-style: italic;
+        font-size: var(--type-lede);
+        line-height: 1.4;
+        max-width: 42ch;
+        margin-inline: auto;
+      ">
+        The painting found the concept before the concept found the painting.
+      </p>
+      <p class="caption m-reveal" style="margin-top: var(--space-m);">
+        A validation piece for <strong style="color: var(--color-fg);">Controlled Chaos PRO</strong> · Saville-mode ·
+        <a href="../../SKILL.md" style="color: var(--color-accent); text-decoration: underline;">read the skill</a>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // Axiom IV — ambient motion only. Slow fade-ins on visible.
+    // See tokens/motion.css and principles/motion.md
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('--visible');
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('.m-reveal, .m-stagger, .m-clip-up, .m-scale-in')
+      .forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

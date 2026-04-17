@@ -1,0 +1,188 @@
+/* ==========================================================================
+   Typography — voice primitives, not preset menus.
+
+   PRO philosophy: v1 shipped 5 named voices (monument, editorial, swiss,
+   brutalist, expressive) coupled to specific typefaces. PRO provides the
+   CLASSES and the PROPERTIES but expects the generator to set the actual
+   font-family per composition, derived from the subject.
+
+   Setting --font-display, --font-body, --font-accent on :root is the
+   generator's responsibility (e.g., Saville might set these to a 1970s
+   Grotesque + Garamond; Weingart might set them to Helvetica Neue + Times).
+
+   This file provides:
+     - A fluid type scale (viewport-responsive)
+     - Tracking and leading utilities
+     - Optical-sizing and weight utilities
+     - Composition primitives (eyebrow, caption, pull-quote)
+   ========================================================================== */
+
+:root {
+  /* Font family roles — generator sets these per composition.
+     Fallbacks are system-ui so unset pages render readably. */
+  --font-display: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: ui-serif, Georgia, "Times New Roman", serif;
+  --font-accent: ui-monospace, "SF Mono", "Menlo", monospace;
+
+  /* Fluid type scale — clamp(min, preferred, max)
+     Scale is multiplied by --force-hierarchy from forces.css */
+  --type-micro: clamp(0.68rem, 0.65rem + 0.2vw, 0.75rem);
+  --type-caption: clamp(0.78rem, 0.72rem + 0.35vw, 0.9rem);
+  --type-body-small: clamp(0.875rem, 0.82rem + 0.35vw, 1rem);
+  --type-body: clamp(1rem, 0.94rem + 0.4vw, 1.125rem);
+  --type-lede: clamp(1.25rem, 1.15rem + 0.6vw, 1.5rem);
+  --type-subhead: clamp(1.75rem, 1.5rem + 1.3vw, 2.5rem);
+  --type-headline: clamp(2.5rem, 2rem + 2.8vw, 4.5rem);
+  --type-display: clamp(4rem, 3rem + 6vw, 8rem);
+  --type-massive: clamp(6rem, 4rem + 12vw, 15rem);
+  --type-civic: clamp(8rem, 5rem + 18vw, 22rem);
+
+  /* Letter-tracking scale */
+  --tracking-mega: -0.04em;
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+  --tracking-widest: 0.16em;
+
+  /* Leading scale */
+  --leading-crush: 0.9;
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.6;
+  --leading-loose: 1.8;
+
+  /* Weights (for variable fonts) */
+  --weight-thin: 100;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* Reading measure */
+  --measure-narrow: 35ch;
+  --measure-body: 55ch;
+  --measure-wide: 75ch;
+}
+
+/* ==========================================================================
+   Voice composition classes — generator COMPOSES these, not picks a preset.
+
+   Each class sets ONE dimension (family OR scale OR weight OR tracking).
+   Apply multiple classes to compose a voice. A Saville eyebrow might be:
+     class="t-accent t-caption t-wide t-smallcaps"
+   A Scher headline might be:
+     class="t-display t-civic t-tight t-black"
+   ========================================================================== */
+
+/* ---- Family role ---- */
+.t-display { font-family: var(--font-display); }
+.t-body { font-family: var(--font-body); }
+.t-accent { font-family: var(--font-accent); }
+
+/* ---- Scale ---- */
+.t-micro { font-size: var(--type-micro); }
+.t-caption { font-size: var(--type-caption); }
+.t-body-small { font-size: var(--type-body-small); }
+.t-body { font-size: var(--type-body); }
+.t-lede { font-size: var(--type-lede); }
+.t-subhead { font-size: var(--type-subhead); }
+.t-headline { font-size: var(--type-headline); }
+.t-display-size { font-size: var(--type-display); }
+.t-massive { font-size: var(--type-massive); }
+.t-civic { font-size: var(--type-civic); }
+
+/* ---- Weight ---- */
+.t-thin { font-weight: var(--weight-thin); }
+.t-light { font-weight: var(--weight-light); }
+.t-regular { font-weight: var(--weight-regular); }
+.t-medium { font-weight: var(--weight-medium); }
+.t-semibold { font-weight: var(--weight-semibold); }
+.t-bold { font-weight: var(--weight-bold); }
+.t-black { font-weight: var(--weight-black); }
+
+/* ---- Tracking ---- */
+.t-track-mega { letter-spacing: var(--tracking-mega); }
+.t-track-tight { letter-spacing: var(--tracking-tight); }
+.t-track-snug { letter-spacing: var(--tracking-snug); }
+.t-track-normal { letter-spacing: var(--tracking-normal); }
+.t-track-wide { letter-spacing: var(--tracking-wide); }
+.t-track-wider { letter-spacing: var(--tracking-wider); }
+.t-track-widest { letter-spacing: var(--tracking-widest); }
+
+/* ---- Leading ---- */
+.t-lead-crush { line-height: var(--leading-crush); }
+.t-lead-tight { line-height: var(--leading-tight); }
+.t-lead-snug { line-height: var(--leading-snug); }
+.t-lead-normal { line-height: var(--leading-normal); }
+.t-lead-relaxed { line-height: var(--leading-relaxed); }
+
+/* ---- Style ---- */
+.t-italic { font-style: italic; }
+.t-smallcaps { font-variant: small-caps; letter-spacing: var(--tracking-wider); }
+.t-uppercase { text-transform: uppercase; }
+.t-lowercase { text-transform: lowercase; }
+
+/* ---- Measure ---- */
+.t-measure-narrow { max-width: var(--measure-narrow); }
+.t-measure-body { max-width: var(--measure-body); }
+.t-measure-wide { max-width: var(--measure-wide); }
+
+/* ==========================================================================
+   Composition primitives — named compositions that recur across personas
+   but remain overridable per subject.
+   ========================================================================== */
+
+/* Eyebrow — small, wide-tracked, often uppercase */
+.eyebrow {
+  font-family: var(--font-accent);
+  font-size: var(--type-caption);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Caption — editorial support text */
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--type-caption);
+  font-style: italic;
+  line-height: var(--leading-snug);
+  color: var(--color-muted);
+}
+
+/* Pull-quote — hanging-indent decorative */
+.pull-quote {
+  font-family: var(--font-body);
+  font-size: var(--type-subhead);
+  line-height: var(--leading-snug);
+  font-style: italic;
+  max-width: var(--measure-body);
+  padding-left: 2ch;
+  border-left: var(--force-border-weight) solid var(--color-accent);
+}
+
+/* Base body treatment */
+body {
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: var(--force-leading);
+  letter-spacing: var(--force-tracking-body);
+  color: var(--color-fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Default headline treatment */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--force-tracking-display);
+  font-weight: var(--weight-bold);
+  margin: 0;
+}

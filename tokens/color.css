@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Color — primitives for subject-derived palette composition.
+
+   PRO philosophy: there are NO named moods here. v1 shipped 8 (void, dusk,
+   signal, earth, frost, blaze, bruise, concrete) — PRO rejects that because
+   menu selection is the primary source of pattern fatigue.
+
+   This file provides the MACHINERY for palette composition. Per-composition
+   palettes are derived from the subject (Saville from an anchor; Bierut from
+   heritage) and set as inline CSS variables on :root or a scoped element.
+
+   The generator sets the following per composition:
+     --color-bg, --color-fg, --color-accent, --color-muted,
+     --color-subtle, --color-surface, --color-border, --color-discord
+
+   Fallbacks below use an achromatic safety net so the page renders before
+   subject-derived palette is applied.
+   ========================================================================== */
+
+:root {
+  /* Achromatic defaults — render safely before generator sets subject palette */
+  --color-bg: #0b0b0b;
+  --color-fg: #f5f3ef;
+  --color-accent: #f5f3ef;
+  --color-muted: rgba(245, 243, 239, 0.6);
+  --color-subtle: rgba(245, 243, 239, 0.12);
+  --color-surface: rgba(245, 243, 239, 0.04);
+  --color-border: rgba(245, 243, 239, 0.18);
+  --color-discord: #ff5722;
+
+  /* Contrast token — derived from force-volume for accent boost */
+  --color-accent-boost: calc(var(--force-volume, 0.5) * 0.2);
+}
+
+/* ---- Base page ---- */
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+/* ---- Selection — cheapest craft-read on the list ---- */
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  text-shadow: none;
+}
+
+/* ---- Grain overlay primitive ----
+   Use deliberately, not by default. Dark-field heroes only.
+   Apply by adding data-grain="true" to <html> or a scoped element.
+   Weighted at 3% — adjust per composition (2-4% is the safe range). */
+
+[data-grain="true"]::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+/* ---- Focus ring — always subject-palette aware ---- */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ---- Utility classes for when subject palette is set ---- */
+
+.bg-surface { background: var(--color-surface); }
+.bg-bg { background: var(--color-bg); }
+.fg-muted { color: var(--color-muted); }
+.fg-accent { color: var(--color-accent); }
+.fg-discord { color: var(--color-discord); }
+.border { border: var(--force-border-weight, 1px) solid var(--color-border); }
+
+/* ==========================================================================
+   How to derive a palette (for the generator — read when composing)
+
+   1. Saville — from a cultural anchor:
+      - Sample 3-5 colors directly from the anchor image
+      - Set --color-bg from the anchor's dominant background
+      - Set --color-fg from its highest-contrast foreground
+      - Set --color-accent from its brightest/most specific color
+      - Set --color-discord from a color the anchor hints at but doesn't foreground
+        (if roses: a single thorn-green streak; if a manifesto: redaction black)
+
+   2. Scher — from the civic-scale phrase:
+      - High contrast always. Two non-colors + one loud accent.
+      - The accent is reserved for the phrase only or the CTA only — never both
+
+   3. Rams — restraint:
+      - Near-monochromatic. One accent at most, used only for interactive states.
+      - Achromatic defaults above are already Rams-compatible
+
+   4. Weingart — CMYK printer misregistration:
+      - 2-3 colors with one deliberately "off-register" accent
+      - Consider setting --color-discord to a color shifted 2-4° on the hue wheel
+        from --color-accent (creates the aberration effect)
+
+   5. Bierut — from heritage:
+      - Audit existing brand assets
+      - Sample directly from archival materials
+      - Never invent; always extract
+
+   The generator MUST justify every color choice against the subject.
+   If a color cannot be defended, it is the wrong color.
+   ========================================================================== */
