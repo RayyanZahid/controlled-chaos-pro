@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en" style="
+  --force-structure: 0.85;
+  --force-density: 0.5;
+  --force-warmth: 0.35;
+  --force-stillness: 0.65;
+  --force-volume: 0.5;
+">
+<head>
+  <meta charset="utf-8">
+  <title>v1 → PRO — a Bierut-mode adaptive reuse · Controlled Chaos PRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--
+    PERSONA: Bierut — adaptive reuse
+    SUBJECT: The transformation of Controlled Chaos v1 into CC-PRO. The page
+             documents the rebrand by performing it — v1 is the heritage.
+    METHOD:  Audit heritage. Find fragments with good bones. Deconstruct.
+             Recombine. Assert the present while descending from the past.
+
+    PALETTE DERIVATION: sampled from CC v1's own forces.css commentary —
+                        the amber/charcoal the skill shipped with — then
+                        transformed (desaturated, shifted, cooled) to
+                        indicate the new system.
+    TYPE:               a 1980s Grotesque (the heritage face) paired with
+                        Inter (the contemporary neutral). Two faces, visibly
+                        different, in clear temporal dialog.
+    MOTION CATEGORY:    narrative — scroll reveals the transformation
+                        step by step. Old becomes new over time.
+    MICROFEATURE:       letter-scramble morph on the wordmark
+                        (v1 letters transform into PRO letters).
+    DISCORD (Axiom II): the heritage swatch at the top — a small,
+                        disciplined Rams-mode block showing v1's
+                        actual tokens. Load-bearing because the
+                        transformation is only legible with evidence.
+  -->
+
+  <style>
+    :root {
+      /* Transformed palette — v1's heritage amber/charcoal, desaturated + cooled */
+      --color-bg: #1a1814;           /* transformed from v1 charcoal */
+      --color-fg: #e8e2d0;           /* transformed from v1 paper */
+      --color-accent: #d4a574;       /* transformed from v1 amber (desaturated) */
+      --color-accent-heritage: #c75d2e; /* v1 amber untransformed — for the swatch */
+      --color-muted: rgba(232, 226, 208, 0.55);
+      --color-subtle: rgba(232, 226, 208, 0.08);
+      --color-surface: rgba(232, 226, 208, 0.03);
+      --color-border: rgba(232, 226, 208, 0.18);
+      --color-discord: #e8e2d0;
+
+      /* Two faces: 1980s Grotesque (heritage) + Inter (present) */
+      --font-display: "Neue Haas Grotesk", "Helvetica Neue", Helvetica, sans-serif;
+      --font-body: "Inter", "Söhne", system-ui, sans-serif;
+      --font-accent: "JetBrains Mono", ui-monospace, monospace;
+    }
+  </style>
+
+  <link rel="stylesheet" href="../../tokens/forces.css">
+  <link rel="stylesheet" href="../../tokens/color.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/layout.css">
+  <link rel="stylesheet" href="../../tokens/motion.css">
+
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-fg);
+      font-family: var(--font-body);
+    }
+
+    /* Heritage swatch — the discord inset */
+    .swatch {
+      padding: var(--space-l) var(--gutter);
+      border-bottom: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      background: var(--color-bg);
+    }
+    .swatch__cell {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-xs);
+      font-family: var(--font-accent);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Hero — the wordmark transformation */
+    .hero {
+      padding: var(--space-3xl) var(--gutter);
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero__mark {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 14vw, 14rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      margin: 0;
+    }
+
+    .hero__mark .from {
+      color: var(--color-muted);
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+    }
+    .hero__mark .to {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .hero__mark .arrow {
+      color: var(--color-fg);
+      padding: 0 0.3em;
+      font-weight: 100;
+    }
+
+    .hero__meta {
+      font-family: var(--font-accent);
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-top: var(--space-l);
+    }
+
+    /* Transformation sections — narrative reveal */
+    .xf-section {
+      padding: var(--space-2xl) var(--gutter);
+      border-bottom: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-xl);
+      max-width: 1400px;
+      margin-inline: auto;
+      width: 100%;
+    }
+
+    .xf-section__label {
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .xf-section__num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--color-muted);
+      margin-top: var(--space-s);
+    }
+
+    .xf-section__body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin: 0 0 var(--space-m);
+      color: var(--color-fg);
+    }
+
+    .xf-section__body h2 em {
+      color: var(--color-accent);
+      font-style: normal;
+    }
+
+    .xf-section__body p {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--color-muted);
+      max-width: 60ch;
+    }
+
+    .xf-section__body p + p { margin-top: var(--space-m); }
+
+    .xf-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-m) 0 0 0;
+    }
+    .xf-list li {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-m);
+      align-items: baseline;
+      padding: var(--space-s) 0;
+      border-top: 1px solid var(--color-border);
+      font-family: var(--font-accent);
+      font-size: 0.85rem;
+    }
+    .xf-list li:last-child { border-bottom: 1px solid var(--color-border); }
+    .xf-list .was {
+      color: var(--color-muted);
+      text-decoration: line-through;
+    }
+    .xf-list .arrow { color: var(--color-accent); }
+    .xf-list .now { color: var(--color-fg); }
+
+    /* Closing — the assertion of the present */
+    .closing {
+      padding: var(--space-3xl) var(--gutter);
+      text-align: center;
+    }
+    .closing h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 0 auto;
+      max-width: 22ch;
+    }
+    .closing h2 em {
+      color: var(--color-accent);
+      font-style: italic;
+    }
+
+    .closing__meta {
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-top: var(--space-xl);
+    }
+
+    .closing__meta a {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .xf-section { grid-template-columns: 1fr; gap: var(--space-m); }
+      .xf-list li { grid-template-columns: 1fr; gap: var(--space-2xs); }
+      .swatch { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- DISCORD — the heritage swatch. Disciplined Rams-mode inset. -->
+  <section class="swatch" aria-label="Heritage tokens from Controlled Chaos v1">
+    <div class="swatch__cell" style="background: #0b0b0b; color: #f5f3ef;">v1 · void</div>
+    <div class="swatch__cell" style="background: #1e2a3a; color: #f5b041;">v1 · dusk</div>
+    <div class="swatch__cell" style="background: #c75d2e; color: #fff;">v1 · blaze</div>
+    <div class="swatch__cell" style="background: #7d8471; color: #1a1814;">v1 · earth</div>
+    <div class="swatch__cell" style="background: #4a4a4a; color: #e8e2d0;">v1 · concrete</div>
+  </section>
+
+  <!-- HERO — the wordmark transformation -->
+  <section class="hero">
+    <h1 class="hero__mark m-reveal">
+      <span class="from">v1</span><span class="arrow">→</span><span class="to">PRO</span>
+    </h1>
+    <p class="hero__meta m-reveal">An adaptive reuse · Bierut-mode · 2026</p>
+  </section>
+
+  <!-- TRANSFORMATION 01 — the audit -->
+  <section class="xf-section">
+    <div class="m-reveal">
+      <span class="xf-section__label">01</span>
+      <div class="xf-section__num">Audit</div>
+    </div>
+    <div class="xf-section__body m-reveal">
+      <h2>What v1 <em>already owned</em>.</h2>
+      <p>
+        Controlled Chaos v1 shipped with five aesthetic modes, eight mood palettes, five typographic voices, a continuous forces framework, and an axiom set. Before PRO, we audited every asset for structural integrity.
+      </p>
+      <ul class="xf-list">
+        <li><span class="was">200 combinations</span><span class="arrow">→</span><span class="now">5 authorial methods</span></li>
+        <li><span class="was">lookup-by-menu</span><span class="arrow">→</span><span class="now">derivation-by-subject</span></li>
+        <li><span class="was">8 named moods</span><span class="arrow">→</span><span class="now">palette machinery</span></li>
+        <li><span class="was">5 voice presets</span><span class="arrow">→</span><span class="now">composition primitives</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TRANSFORMATION 02 — what we kept -->
+  <section class="xf-section">
+    <div class="m-reveal">
+      <span class="xf-section__label">02</span>
+      <div class="xf-section__num">Kept</div>
+    </div>
+    <div class="xf-section__body m-reveal">
+      <h2>The <em>five continuous forces</em>.</h2>
+      <p>
+        The forces abstraction — five 0-to-1 spectrums (structure, density, warmth, stillness, volume) that derive every downstream CSS value — was v1's strongest original contribution. PRO preserves it entirely. The spectrums survived; the named preset list that picked five positions on them did not.
+      </p>
+      <p>
+        The axioms also carry forward, with one addition. Axiom V — <em>derive, don't decorate</em> — is new to PRO and governs everything above it.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRANSFORMATION 03 — what we transformed -->
+  <section class="xf-section">
+    <div class="m-reveal">
+      <span class="xf-section__label">03</span>
+      <div class="xf-section__num">Transformed</div>
+    </div>
+    <div class="xf-section__body m-reveal">
+      <h2>From menu to <em>method</em>.</h2>
+      <p>
+        The deepest transformation: CC v1 asked designers to pick a <em>mode</em>. PRO asks them to pick a <em>persona</em> — Saville, Scher, Rams, Weingart, Bierut. A mode is an aesthetic. A persona is a working process. One is a destination, the other is a map.
+      </p>
+      <p>
+        The ambition isn't aesthetic variety (you can get that from any generator). The ambition is methodological variety — outputs that differ because they were produced by different <em>decisions</em>, not different lookups.
+      </p>
+    </div>
+  </section>
+
+  <!-- TRANSFORMATION 04 — what we removed -->
+  <section class="xf-section">
+    <div class="m-reveal">
+      <span class="xf-section__label">04</span>
+      <div class="xf-section__num">Removed</div>
+    </div>
+    <div class="xf-section__body m-reveal">
+      <h2>The <em>menu</em>.</h2>
+      <p>
+        200 preset combinations across modes, moods, and voices — removed in full. The gallery remains, but as inspiration only; the similarity-reject quality gate stops new outputs from matching it. The skill no longer answers the question <em>"which combination?"</em> — it answers <em>"derived from what, authored how?"</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- CLOSING — the assertion -->
+  <section class="closing">
+    <h2 class="m-reveal">
+      The <em>transformation</em> is the method, and the method is the identity.
+    </h2>
+    <p class="closing__meta m-reveal">
+      A validation piece for <a href="../../SKILL.md">Controlled Chaos PRO</a> &middot; Bierut-mode &middot; 2026
+    </p>
+  </section>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('--visible');
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('.m-reveal, .m-stagger, .m-clip-up, .m-scale-in')
+      .forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

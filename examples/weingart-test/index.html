@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en" style="
+  --force-structure: 0.88;
+  --force-density: 0.7;
+  --force-warmth: 0.15;
+  --force-stillness: 0.4;
+  --force-volume: 0.75;
+">
+<head>
+  <meta charset="utf-8">
+  <title>Typografische — a Weingart-mode zine on disciplined rebellion · Controlled Chaos PRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--
+    PERSONA: Weingart — disciplined rebellion
+    SUBJECT: A fictional typography zine (Typografische 09) about post-modern
+             web typography. The subject demands the method it describes.
+    METHOD:  Establish rigid Swiss grid. Violate it at ONE load-bearing point.
+
+    PALETTE DERIVATION: CMYK printer's inks with deliberate misregistration.
+                        Off-register cyan/magenta ghost on the hero as chromatic
+                        aberration. Black primary, paper ground.
+    TYPE:               Helvetica workhorse for the 90% grid-respecting body.
+                        A display cut only in the violation zone.
+    MOTION CATEGORY:    punctuating + reactive — chromatic aberration pulses
+                        on hover; the violation section layers type.
+    MICROFEATURE:       chromatic aberration on hero typography (Weingart signature).
+    DISCORD (Axiom II): the page IS the violation. The discord move is that
+                        everything not-in-the-violation is rigorous Swiss —
+                        so the violation reads by contrast.
+  -->
+
+  <style>
+    :root {
+      /* CMYK-derived palette — off-register */
+      --color-bg: #ede9df;        /* paper ground */
+      --color-fg: #0a0a0a;        /* printer's black */
+      --color-accent: #e8185f;    /* magenta — loud civic */
+      --color-accent-alt: #00aeef; /* cyan — off-register ghost */
+      --color-muted: #555;
+      --color-subtle: rgba(10, 10, 10, 0.07);
+      --color-surface: rgba(232, 24, 95, 0.03);
+      --color-border: rgba(10, 10, 10, 0.28);
+      --color-discord: #ffd400;   /* yellow — the loud third ink */
+
+      --font-display: "Helvetica Neue", "Neue Haas Grotesk", Helvetica, Arial, sans-serif;
+      --font-body: "Helvetica Neue", "Neue Haas Grotesk", Helvetica, sans-serif;
+      --font-accent: "JetBrains Mono", ui-monospace, monospace;
+    }
+  </style>
+
+  <link rel="stylesheet" href="../../tokens/forces.css">
+  <link rel="stylesheet" href="../../tokens/color.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/layout.css">
+  <link rel="stylesheet" href="../../tokens/motion.css">
+
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-fg);
+      font-family: var(--font-body);
+    }
+
+    /* Swiss grid header — rigorous floor */
+    .masthead {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      padding: var(--space-m) var(--gutter);
+      border-bottom: 3px solid var(--color-fg);
+      align-items: baseline;
+      gap: var(--space-m);
+    }
+    .masthead__title {
+      grid-column: 1 / span 6;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 0.9;
+    }
+    .masthead__issue {
+      grid-column: 7 / span 2;
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .masthead__date {
+      grid-column: 9 / span 2;
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .masthead__lang {
+      grid-column: 11 / span 2;
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      text-align: right;
+    }
+
+    /* Hero — chromatic aberration on a declarative phrase (Weingart signature) */
+    .hero {
+      padding: var(--space-3xl) var(--gutter);
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+    }
+    .hero__eyebrow {
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: var(--space-m);
+      display: block;
+    }
+    .hero__phrase {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(3rem, 10vw, 10rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin: 0;
+      position: relative;
+    }
+
+    /* The aberration — cyan + magenta ghost layers */
+    .aberrate {
+      position: relative;
+      display: inline-block;
+    }
+    .aberrate::before,
+    .aberrate::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: transform 300ms var(--ease-out), opacity 300ms var(--ease-out);
+      pointer-events: none;
+    }
+    .aberrate::before {
+      color: var(--color-accent);
+      transform: translate(-2px, 1px);
+      mix-blend-mode: multiply;
+      opacity: 0.6;
+    }
+    .aberrate::after {
+      color: var(--color-accent-alt);
+      transform: translate(2px, -1px);
+      mix-blend-mode: multiply;
+      opacity: 0.6;
+    }
+    .aberrate:hover::before { transform: translate(-5px, 2px); opacity: 0.9; }
+    .aberrate:hover::after { transform: translate(5px, -2px); opacity: 0.9; }
+
+    /* Articles grid — rigorous Swiss */
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--space-m);
+      padding: var(--space-xl) var(--gutter);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .article {
+      grid-column: span 4;
+      border-top: 2px solid var(--color-fg);
+      padding-top: var(--space-s);
+    }
+    .article__num {
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .article__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: var(--space-xs) 0 var(--space-s);
+    }
+    .article__body {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--color-muted);
+    }
+
+    /* THE VIOLATION — Weingart section, grid broken here */
+    .violation {
+      padding: var(--space-3xl) var(--gutter);
+      background: var(--color-fg);
+      color: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+      min-height: 80vh;
+    }
+
+    .violation__layer-1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(4rem, 18vw, 18rem);
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--color-bg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .violation__layer-2 {
+      position: absolute;
+      top: 35%;
+      left: 12%;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      line-height: 1.1;
+      color: var(--color-accent);
+      max-width: 22ch;
+      transform: rotate(-5deg);
+      z-index: 2;
+    }
+
+    .violation__layer-3 {
+      position: absolute;
+      bottom: 8%;
+      right: 6%;
+      font-family: var(--font-accent);
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-discord);
+      max-width: 28ch;
+      line-height: 1.5;
+      transform: rotate(3deg);
+      z-index: 3;
+    }
+
+    .violation__rule {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--color-accent-alt);
+      transform: rotate(-1.5deg);
+      z-index: 0;
+      mix-blend-mode: difference;
+    }
+
+    /* Caption explaining the violation */
+    .violation__caption {
+      padding: var(--space-l) var(--gutter);
+      background: var(--color-bg);
+      color: var(--color-fg);
+      border-top: 3px solid var(--color-fg);
+      border-bottom: 3px solid var(--color-fg);
+    }
+    .violation__caption p {
+      max-width: 56ch;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .violation__caption strong {
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+
+    /* Colophon */
+    .colophon {
+      padding: var(--space-xl) var(--gutter);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--space-m);
+      border-top: 1px solid var(--color-border);
+      font-size: 0.85rem;
+    }
+    .colophon dt {
+      grid-column: span 3;
+      font-family: var(--font-accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      color: var(--color-muted);
+    }
+    .colophon dd {
+      grid-column: span 9;
+      margin: 0 0 var(--space-s) 0;
+    }
+
+    /* Color-invert slam — Weingart microfeature */
+    .slam {
+      display: inline-block;
+      padding: 2px 8px;
+      background: var(--color-fg);
+      color: var(--color-bg);
+      transition: background 0ms, color 0ms;
+    }
+    .slam:hover {
+      background: var(--color-bg);
+      color: var(--color-fg);
+      outline: 1px solid var(--color-fg);
+    }
+
+    @media (max-width: 768px) {
+      .articles .article { grid-column: span 12; }
+      .masthead { grid-template-columns: 1fr; }
+      .masthead > * { grid-column: 1; text-align: left; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MASTHEAD (Swiss floor) -->
+  <header class="masthead">
+    <h1 class="masthead__title">Typografische</h1>
+    <span class="masthead__issue">No. 09</span>
+    <span class="masthead__date">April 2026</span>
+    <span class="masthead__lang">Basel · Web</span>
+  </header>
+
+  <!-- HERO — chromatic aberration on declarative phrase -->
+  <section class="hero">
+    <span class="hero__eyebrow m-reveal">The quarterly on post-modern web typography</span>
+    <h2 class="hero__phrase m-reveal">
+      Know<br>
+      <span class="aberrate" data-text="the grid">the grid</span>.<br>
+      Break<br>
+      <span class="aberrate" data-text="it once">it once</span>.
+    </h2>
+  </section>
+
+  <!-- ARTICLES — disciplined Swiss grid, 3 columns -->
+  <section class="articles">
+    <article class="article m-stagger">
+      <span class="article__num">01 · Essay</span>
+      <h3 class="article__title">Weingart at forty: what Basel taught the browser</h3>
+      <p class="article__body">
+        Forty years after Weingart layered photographs through typographic grids at Basel, the browser has caught up. CSS clip-path, mix-blend-mode, and SVG filters now do what halftone plates and offset registration once did — badly.
+      </p>
+    </article>
+    <article class="article m-stagger">
+      <span class="article__num">02 · Case study</span>
+      <h3 class="article__title">Greiman's &ldquo;Snow White and the Seven Pixels&rdquo; revisited</h3>
+      <p class="article__body">
+        April Greiman's 1986 3M poster predicted the variable font. The principle was the same: rules layered across rules until pattern emerged. The web has had variable fonts since 2017 and still treats them as a gimmick.
+      </p>
+    </article>
+    <article class="article m-stagger">
+      <span class="article__num">03 · Technique</span>
+      <h3 class="article__title">Chromatic aberration as meaning, not decoration</h3>
+      <p class="article__body">
+        A 2px RGB channel split is a craft-read. A 12px split is broken. The principle: the violation must be legible as intentional. Push beyond that and it reads as a render bug.
+      </p>
+    </article>
+  </section>
+
+  <!-- THE VIOLATION -->
+  <section class="violation">
+    <div class="violation__rule"></div>
+    <h2 class="violation__layer-1 m-reveal">
+      Grid<br>Broken.
+    </h2>
+    <p class="violation__layer-2 m-reveal">
+      you can only<br>break the rules<br>if you understand<br>them first
+    </p>
+    <p class="violation__layer-3 m-reveal">
+      — Wolfgang Weingart · Basel School, 1972
+    </p>
+  </section>
+
+  <aside class="violation__caption">
+    <p class="m-reveal">
+      <strong>On the previous spread</strong>
+      The spread that precedes this caption is the only violation in this issue. Every other article rests on the 12-column Swiss grid you see at the top. The violation is legible BECAUSE the grid is disciplined — rotated type on rotated type would read as chaos, not composition. The method is 90% discipline, 10% deliberate rupture.
+    </p>
+  </aside>
+
+  <!-- COLOPHON -->
+  <dl class="colophon">
+    <dt>Persona</dt>
+    <dd><span class="slam">Weingart</span> — disciplined rebellion</dd>
+    <dt>Palette</dt>
+    <dd>CMYK printer's inks, off-register — <span class="slam">magenta</span>, <span class="slam">cyan</span>, yellow third-ink, black primary</dd>
+    <dt>Typography</dt>
+    <dd>Neue Haas Grotesk (workhorse) · display cuts in the violation only</dd>
+    <dt>Motion</dt>
+    <dd>Punctuating + reactive — chromatic aberration pulses on hover</dd>
+    <dt>Microfeature</dt>
+    <dd>Chromatic aberration on hero typography (RGB channel split)</dd>
+    <dt>Issue</dt>
+    <dd>Validation piece for <a href="../../SKILL.md" class="slam">Controlled Chaos PRO</a> &middot; 2026</dd>
+  </dl>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('--visible');
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('.m-reveal, .m-stagger, .m-clip-up, .m-scale-in')
+      .forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

@@ -28,14 +28,15 @@ The generator's quality gate compares new outputs against these axes and rejects
 ## Current exemplars
 
 - [clawcamp.md](./clawcamp.md) — A presentation deck demonstrating punctuating motion and near-full-bleed composition
+- [maxima-therapy.md](./maxima-therapy.md) — Rope physics + sticky-grid scroll; the one-signature-motion-move rule in practice
+- [lando-norris.md](./lando-norris.md) — Chromatic section shifts + extreme color restraint; Awwwards Site of the Year 2025
+- [saks-2007.md](./saks-2007.md) — Bierut's 64-square deconstruction; the canonical adaptive-reuse case study
 
 ## Roadmap (v0.2+)
 
-- `maxima-therapy.md` — rope physics + sticky-grid scroll
-- `lando-norris.md` — chromatic section shifts + restraint
 - `experimental-jetset-stedelijk.md` — typography-as-object
-- `saks-2007.md` — Bierut's 64-square deconstruction
 - `blue-monday-sleeve.md` — Saville's form-as-violation
+- `public-theater-scher.md` — civic typography at its origin
 
 ## Contributing exemplars
 
