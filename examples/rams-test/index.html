@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en" style="
+  --force-structure: 0.98;
+  --force-density: 0.55;
+  --force-warmth: 0.05;
+  --force-stillness: 0.95;
+  --force-volume: 0.1;
+">
+<head>
+  <meta charset="utf-8">
+  <title>Controlled Chaos PRO · a design system skill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Controlled Chaos PRO — a principles-based design system for generating novel web output. Open source. MIT licensed.">
+
+  <!--
+    PERSONA: Rams — pay-rent test
+    SUBJECT: Controlled Chaos PRO's own product page
+    METHOD:  Strip to essence. Every element earns its presence.
+             Monochromatic. One typeface. No decoration.
+
+    PALETTE DERIVATION: near-monochromatic. One neutral interactive accent.
+                        White-ground industrial, like a Braun product catalog.
+    TYPE ERA:           system-grotesque. Honest, industrial, readable.
+    MOTION CATEGORY:    reactive only — hover feedback, link underlines.
+                        No ambient. No punctuating. No narrative.
+    MICROFEATURE:       NONE. The discipline IS the craft (per personas/rams.md).
+    DISCORD (Axiom II): ONE italic sentence (subject-italic) where the voice
+                        drops the mechanical tone for a single opinion.
+                        Load-bearing because even Rams had opinions.
+  -->
+
+  <style>
+    :root {
+      /* Near-monochromatic — white ground, near-black foreground */
+      --color-bg: #fafafa;
+      --color-fg: #0e0e0e;
+      --color-accent: #2d5a8c;  /* one neutral blue for interactive states only */
+      --color-muted: #707070;
+      --color-subtle: rgba(14, 14, 14, 0.05);
+      --color-surface: #f0f0f0;
+      --color-border: rgba(14, 14, 14, 0.15);
+      --color-discord: #2d5a8c;
+
+      /* ONE typeface family. System fallback only. */
+      --font-display: "Inter", "Söhne", "Helvetica Neue", system-ui, sans-serif;
+      --font-body: "Inter", "Söhne", "Helvetica Neue", system-ui, sans-serif;
+      --font-accent: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+    }
+  </style>
+
+  <link rel="stylesheet" href="../../tokens/forces.css">
+  <link rel="stylesheet" href="../../tokens/color.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/layout.css">
+  <link rel="stylesheet" href="../../tokens/motion.css">
+
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-fg);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 720px;
+      margin-inline: auto;
+      padding: var(--space-2xl) var(--gutter);
+    }
+
+    .page > * + * {
+      margin-top: var(--space-l);
+    }
+
+    /* Heading — three sizes total, per Rams method */
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    p {
+      margin: 0;
+      max-width: 62ch;
+    }
+
+    .intro {
+      font-size: 1.125rem;
+      line-height: 1.55;
+      color: var(--color-fg);
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--color-border);
+      margin: 0;
+    }
+
+    /* Code — monospace, subtle surface */
+    pre, code {
+      font-family: var(--font-accent);
+      font-size: 0.875rem;
+    }
+
+    pre {
+      background: var(--color-surface);
+      padding: var(--space-m);
+      overflow-x: auto;
+      border: 1px solid var(--color-border);
+      line-height: 1.6;
+    }
+
+    code {
+      background: var(--color-subtle);
+      padding: 2px 5px;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    /* Links — reactive feedback only */
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 180ms ease-out;
+    }
+    a:hover {
+      border-bottom-color: var(--color-accent);
+    }
+
+    /* Personas table — dense, honest */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    th, td {
+      text-align: left;
+      padding: var(--space-s) var(--space-m) var(--space-s) 0;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+    th {
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    td:first-child {
+      font-weight: 600;
+      width: 20%;
+    }
+    td:last-child {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Footnote list */
+    ol {
+      padding-left: 1.25rem;
+      margin: 0;
+    }
+    ol li {
+      margin-bottom: var(--space-2xs);
+    }
+    ol li::marker {
+      color: var(--color-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* DISCORD — one italic sentence, load-bearing */
+    .discord {
+      font-family: Georgia, "Iowan Old Style", serif;
+      font-style: italic;
+      font-size: 1.125rem;
+      line-height: 1.55;
+      color: var(--color-discord);
+      padding-left: 0;
+      margin-block: var(--space-xl);
+      max-width: 42ch;
+    }
+
+    /* Footer — minimal */
+    footer {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      padding-top: var(--space-l);
+      border-top: 1px solid var(--color-border);
+    }
+
+    footer a {
+      color: var(--color-muted);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: var(--space-xs) var(--space-m);
+      font-size: 0.875rem;
+    }
+    .meta-grid dt {
+      color: var(--color-muted);
+      font-weight: 500;
+    }
+    .meta-grid dd {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- ========== WHAT IT IS ========== -->
+    <div>
+      <h2>Controlled Chaos PRO</h2>
+      <h1>A design system skill that generates novel web output.</h1>
+    </div>
+
+    <p class="intro">
+      Principles-based composition. Authorial personas. Subject-derived aesthetics. Open source. MIT licensed. No menu.
+    </p>
+
+    <hr>
+
+    <!-- ========== HOW IT DIFFERS ========== -->
+    <div>
+      <h2>How it differs from v1</h2>
+      <p>
+        The original <a href="https://github.com/RayyanZahid/controlled-chaos">Controlled Chaos</a> skill ships 5 aesthetic modes, 8 mood palettes, and 5 typographic voices. Two-hundred combinations. After six months of heavy use, every output becomes recognizable as &ldquo;CC.&rdquo; Pattern fatigue.
+      </p>
+      <p style="margin-top: var(--space-s);">
+        PRO removes the menu. Aesthetic DNA is derived per-run from the subject. Method comes from a persona library. Every output is one of one.
+      </p>
+    </div>
+
+    <hr>
+
+    <!-- ========== INSTALL ========== -->
+    <div>
+      <h2>Install</h2>
+      <pre><code>cd ~/.claude/skills
+git clone https://github.com/RayyanZahid/controlled-chaos-pro</code></pre>
+    </div>
+
+    <!-- ========== USE ========== -->
+    <div>
+      <h2>Use</h2>
+      <p>In Claude Code:</p>
+      <pre><code>Generate a page for [subject] using controlled-chaos-pro.</code></pre>
+      <p style="margin-top: var(--space-s);">Or invoke explicitly:</p>
+      <pre><code>/controlled-chaos-pro</code></pre>
+    </div>
+
+    <hr>
+
+    <!-- ========== THE PERSONAS ========== -->
+    <div>
+      <h2>The five personas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Persona</th>
+            <th>Method</th>
+            <th>Use when</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Saville</td>
+            <td>source-before-style</td>
+            <td>Subject has cultural anchors</td>
+          </tr>
+          <tr>
+            <td>Scher</td>
+            <td>scale-as-voice</td>
+            <td>Typography alone can carry</td>
+          </tr>
+          <tr>
+            <td>Rams</td>
+            <td>pay-rent test</td>
+            <td>Functional, honest product</td>
+          </tr>
+          <tr>
+            <td>Weingart</td>
+            <td>disciplined rebellion</td>
+            <td>Expressive post-modern</td>
+          </tr>
+          <tr>
+            <td>Bierut</td>
+            <td>adaptive reuse</td>
+            <td>Transform existing heritage</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <!-- ========== AXIOMS ========== -->
+    <div>
+      <h2>Axioms</h2>
+      <ol>
+        <li>Type is the hero.</li>
+        <li>Tension is beauty.</li>
+        <li>Whitespace is pressurized.</li>
+        <li>Motion has meaning.</li>
+        <li>Derive, don&rsquo;t decorate.</li>
+      </ol>
+    </div>
+
+    <!-- ========== DISCORD — the one italic sentence ========== -->
+    <p class="discord">
+      This page is a Rams-mode validation. It looks this quiet because the method demanded it &mdash; not because restraint is the aesthetic. The louder this page got, the less honest it became.
+    </p>
+
+    <hr>
+
+    <!-- ========== CREDITS / META ========== -->
+    <div>
+      <h2>Details</h2>
+      <dl class="meta-grid">
+        <dt>Version</dt>       <dd>0.1 &mdash; 2026-04-17</dd>
+        <dt>License</dt>       <dd>MIT</dd>
+        <dt>Author</dt>        <dd><a href="https://www.linkedin.com/in/rayyanzahid">Rayyan Zahid</a></dd>
+        <dt>Repository</dt>    <dd><a href="https://github.com/RayyanZahid/controlled-chaos-pro">github.com/RayyanZahid/controlled-chaos-pro</a></dd>
+        <dt>Built with</dt>    <dd>Claude</dd>
+      </dl>
+    </div>
+
+    <footer>
+      <p>A validation piece for <a href="../../SKILL.md">Controlled Chaos PRO</a> &middot; Rams-mode &middot; 2026</p>
+    </footer>
+
+  </main>
+</body>
+</html>

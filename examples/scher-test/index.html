@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en" style="
+  --force-structure: 0.92;
+  --force-density: 0.8;
+  --force-warmth: 0.08;
+  --force-stillness: 0.35;
+  --force-volume: 1;
+">
+<head>
+  <meta charset="utf-8">
+  <title>Derive, don't decorate — a Scher-mode manifesto · Controlled Chaos PRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Validation page for Controlled Chaos PRO. Scher-mode manifesto for principles-based design. Civic-scale typography, one loud accent, dense counterweight.">
+
+  <!--
+    PERSONA: Scher — scale-as-voice
+    SUBJECT: A manifesto for principles-based design (the thesis of CC-PRO itself)
+    METHOD:  Pick ONE declarative phrase per beat. Fill the viewport with it.
+             Counterweight everything else as dense supporting matter.
+
+    PALETTE DERIVATION: civic poster tradition. Two non-colors + one loud accent.
+                        Vermillion because the manifesto is a claim, not a whisper.
+    TYPE ERA:           wood-type civic via heavy condensed grotesque.
+    MOTION CATEGORY:    punctuating — ONE dramatic reveal per hero phrase.
+                        Reactive — kerning-on-emphasis on individual words.
+    MICROFEATURE:       kerning-on-emphasis (Scher signature from principles/).
+    DISCORD (Axiom II): a small Rams-mode inset mid-page where the civic voice
+                        drops to utility prose. Load-bearing because the
+                        manifesto itself demands acting on it, not just hearing it.
+  -->
+
+  <style>
+    :root {
+      /* Subject-derived palette — civic poster tradition */
+      --color-bg: #f5f0e4;       /* paper — Scher's Public Theater poster stock */
+      --color-fg: #0a0a0a;       /* ink */
+      --color-accent: #d4281c;   /* vermillion — the civic loud note */
+      --color-muted: #5a5a5a;
+      --color-subtle: rgba(10, 10, 10, 0.06);
+      --color-surface: rgba(212, 40, 28, 0.04);
+      --color-border: rgba(10, 10, 10, 0.35);
+      --color-discord: #9a9a9a;  /* gray — the Rams utility inset */
+
+      /* Wood-type civic + workhorse grotesque + monospace accent */
+      --font-display: "Impact", "Barlow Condensed", "Oswald", "Helvetica Neue", sans-serif;
+      --font-body: "Helvetica Neue", "Söhne", "Inter", Helvetica, Arial, sans-serif;
+      --font-accent: "JetBrains Mono", ui-monospace, monospace;
+    }
+  </style>
+
+  <link rel="stylesheet" href="../../tokens/forces.css">
+  <link rel="stylesheet" href="../../tokens/color.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/layout.css">
+  <link rel="stylesheet" href="../../tokens/motion.css">
+
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-fg);
+    }
+
+    /* Civic-scale hero block */
+    .civic {
+      display: flex;
+      align-items: center;
+      min-height: 100dvh;
+      padding: var(--space-xl) var(--gutter);
+      border-top: 3px solid var(--color-fg);
+      position: relative;
+    }
+    .civic:first-of-type { border-top: none; }
+
+    .civic__label {
+      position: absolute;
+      top: var(--space-m);
+      left: var(--gutter);
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .civic__phrase {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(5rem, 20vw, 22rem);
+      line-height: 0.82;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--color-fg);
+    }
+
+    .civic__phrase em {
+      font-style: normal;
+      color: var(--color-accent);
+    }
+
+    .civic__meta {
+      position: absolute;
+      bottom: var(--space-m);
+      right: var(--gutter);
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      text-align: right;
+    }
+
+    /* Counterweight — dense, multi-column supporting matter */
+    .counter {
+      padding: var(--space-2xl) var(--gutter);
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+
+    .counter__grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-2xl);
+      max-width: 1400px;
+      margin-inline: auto;
+    }
+
+    .counter__label {
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .counter__cols {
+      column-count: 2;
+      column-gap: var(--space-xl);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .counter__cols p {
+      break-inside: avoid;
+      margin: 0 0 var(--space-m) 0;
+    }
+
+    .counter__cols strong {
+      font-weight: 700;
+      color: var(--color-accent);
+      font-family: var(--font-accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Kerning-on-emphasis — Scher signature microfeature */
+    .kern {
+      display: inline-block;
+      transition: letter-spacing 280ms var(--ease-out);
+      cursor: default;
+    }
+    .kern:hover {
+      letter-spacing: 0.14em;
+    }
+
+    /* Persona list — dense counterweight */
+    .personas {
+      max-width: 1400px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .persona {
+      padding: var(--space-m);
+      border-right: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .persona:last-child { border-right: none; }
+
+    .persona__num {
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+
+    .persona__name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin: var(--space-2xs) 0;
+    }
+
+    .persona__method {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+    /* DISCORD — the Rams-mode inset */
+    .discord-inset {
+      background: var(--color-discord);
+      padding: var(--space-l) var(--gutter);
+      border-top: 3px solid var(--color-fg);
+      border-bottom: 3px solid var(--color-fg);
+    }
+
+    .discord-inset__content {
+      max-width: 40ch;
+      margin-inline: auto;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--color-bg);
+    }
+
+    .discord-inset__content strong {
+      display: block;
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-xs);
+      color: var(--color-bg);
+    }
+
+    /* Responsive — civic scales down but stays civic */
+    @media (max-width: 768px) {
+      .counter__grid { grid-template-columns: 1fr; gap: var(--space-m); }
+      .counter__cols { column-count: 1; }
+      .personas { grid-template-columns: 1fr; }
+      .persona { border-right: none; }
+    }
+
+    /* Sign-off */
+    .signoff {
+      padding: var(--space-xl) var(--gutter);
+      text-align: center;
+      border-top: 1px solid var(--color-border);
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .signoff a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-accent);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== CIVIC 1 ========== -->
+  <section class="civic">
+    <span class="civic__label">The CC-PRO manifesto · 001</span>
+    <h1 class="civic__phrase m-reveal">
+      <span class="kern">Derive,</span><br>
+      <em class="kern">don't</em> <span class="kern">decorate.</span>
+    </h1>
+    <span class="civic__meta">Published 2026-04-17 · Open source</span>
+  </section>
+
+  <!-- ========== COUNTERWEIGHT 1 — THE AXIOMS ========== -->
+  <section class="counter">
+    <div class="counter__grid">
+      <div>
+        <p class="counter__label m-reveal">The five axioms</p>
+      </div>
+      <div class="counter__cols m-reveal">
+        <p>
+          <strong>I · Type is the hero</strong>
+          Typography drives hierarchy. Imagery is auxiliary. If removing the imagery breaks the page, you're doing it wrong.
+        </p>
+        <p>
+          <strong>II · Tension is beauty</strong>
+          Near-symmetry, not perfect symmetry. Deliberate imbalance. Break the grid at one load-bearing point.
+        </p>
+        <p>
+          <strong>III · Whitespace is pressurized</strong>
+          Negative space pushes with intent. It is not what's left over — it is what you PUT there.
+        </p>
+        <p>
+          <strong>IV · Motion has meaning</strong>
+          Every animation answers: what problem does this solve? If the answer is "because it looks cool," cut it.
+        </p>
+        <p>
+          <strong>V · Derive, don't decorate</strong>
+          Aesthetic DNA is derived per-run from the subject. Not picked from a menu. The subject contains its own design system; your job is to listen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CIVIC 2 ========== -->
+  <section class="civic">
+    <span class="civic__label">002</span>
+    <h1 class="civic__phrase m-reveal">
+      <span class="kern">No</span> <em class="kern">templates.</em>
+    </h1>
+    <span class="civic__meta">200 menu combos in v1 · zero in PRO</span>
+  </section>
+
+  <!-- ========== COUNTERWEIGHT 2 — THE PERSONAS ========== -->
+  <section class="counter">
+    <div class="counter__grid" style="margin-bottom: var(--space-xl);">
+      <div>
+        <p class="counter__label m-reveal">Five authorial methods</p>
+      </div>
+      <div>
+        <p class="m-reveal" style="font-family: var(--font-body); font-size: 0.95rem; line-height: 1.5; max-width: 55ch;">
+          Each persona is a <strong style="color: var(--color-accent);">method</strong>, not an aesthetic. Picking Saville means following Saville's process — not copying the <em>Power, Corruption &amp; Lies</em> sleeve. The method varies per subject. The floor stays the same.
+        </p>
+      </div>
+    </div>
+
+    <div class="personas">
+      <div class="persona m-stagger">
+        <span class="persona__num">No. 01</span>
+        <h3 class="persona__name">Saville</h3>
+        <p class="persona__method">source-before-style. Find what already means the thing.</p>
+      </div>
+      <div class="persona m-stagger">
+        <span class="persona__num">No. 02</span>
+        <h3 class="persona__name">Scher</h3>
+        <p class="persona__method">scale-as-voice. Typography IS the architecture.</p>
+      </div>
+      <div class="persona m-stagger">
+        <span class="persona__num">No. 03</span>
+        <h3 class="persona__name">Rams</h3>
+        <p class="persona__method">pay-rent test. Every element earns its presence.</p>
+      </div>
+      <div class="persona m-stagger">
+        <span class="persona__num">No. 04</span>
+        <h3 class="persona__name">Weingart</h3>
+        <p class="persona__method">disciplined rebellion. Know the grid. Break it once.</p>
+      </div>
+      <div class="persona m-stagger">
+        <span class="persona__num">No. 05</span>
+        <h3 class="persona__name">Bierut</h3>
+        <p class="persona__method">adaptive reuse. Transform existing heritage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DISCORD — The Rams inset (Axiom II violation) ========== -->
+  <section class="discord-inset m-reveal">
+    <div class="discord-inset__content">
+      <strong>Utility</strong>
+      <p>
+        This page demonstrates the Scher method applied to a manifesto. If you want to use the method yourself, clone the repo, read <code style="font-family: var(--font-accent);">axioms.md</code>, read <code style="font-family: var(--font-accent);">personas/scher.md</code>. Begin. No permission needed.
+      </p>
+      <p style="margin-top: var(--space-s);">
+        <code style="font-family: var(--font-accent); font-size: 0.85rem;">git clone github.com/RayyanZahid/controlled-chaos-pro</code>
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CIVIC 3 ========== -->
+  <section class="civic">
+    <span class="civic__label">003 · closing</span>
+    <h1 class="civic__phrase m-reveal">
+      <span class="kern">Every</span> <span class="kern">page</span><br>
+      <span class="kern">is</span> <em class="kern">one</em> <span class="kern">of</span> <em class="kern">one.</em>
+    </h1>
+    <span class="civic__meta">— the thesis</span>
+  </section>
+
+  <!-- ========== SIGNOFF ========== -->
+  <footer class="signoff">
+    A validation piece for <a href="../../SKILL.md">Controlled Chaos PRO</a> · Scher-mode · 2026
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('--visible');
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+
+    document.querySelectorAll('.m-reveal, .m-stagger, .m-clip-up, .m-scale-in')
+      .forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
