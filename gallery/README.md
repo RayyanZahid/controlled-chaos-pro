@@ -2,6 +2,8 @@
 
 Annotated exemplars. **Inspiration, not menu.**
 
+> **See the visual archive:** open [`index.html`](./index.html) in a browser — a Saville-mode editorial gallery that frames the annotations below.
+
 ## How to use
 
 **Do:**

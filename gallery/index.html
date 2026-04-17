@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en" style="
+  --force-structure: 0.85;
+  --force-density: 0.35;
+  --force-warmth: 0.55;
+  --force-stillness: 0.9;
+  --force-volume: 0.3;
+">
+<head>
+  <meta charset="utf-8">
+  <title>The archive — annotated exemplars · Controlled Chaos PRO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Controlled Chaos PRO gallery. Annotated exemplars of award-level web work — inspiration, not menu.">
+
+  <!--
+    PERSONA: Saville — source-before-style
+    SUBJECT: The CC-PRO gallery itself — an archive of design heritage.
+             Saville fits because the subject IS a set of sourced design
+             artifacts; the page frames them editorially.
+    METHOD:  Editorial treatment. Each exemplar as a sourced reference,
+             framed with care, linked to its live site and its full
+             analysis. No thumbnails (visual pattern-matching would
+             defeat the "inspiration, not menu" rule).
+
+    PALETTE DERIVATION: editorial warm-neutral. Paper cream, deep ink,
+                        a sourced terracotta accent. Restraint first.
+    TYPE:               editorial serif + clean sans. Two faces.
+    MOTION CATEGORY:    ambient only — slow editorial fade-ins.
+    MICROFEATURE:       editorial caption typography (Saville signature).
+    DISCORD (Axiom II): one Weingart-mode section for the Saks exemplar
+                        where the editorial voice breaks into layered
+                        typography (the Bierut entry demands an honest
+                        visual reference to the deconstruction method).
+  -->
+
+  <style>
+    :root {
+      --color-bg: #f4eedc;           /* editorial paper */
+      --color-fg: #1c1a14;           /* ink */
+      --color-accent: #a8543a;       /* terracotta — sourced warmth */
+      --color-muted: #6b6558;
+      --color-subtle: rgba(28, 26, 20, 0.06);
+      --color-surface: rgba(168, 84, 58, 0.04);
+      --color-border: rgba(28, 26, 20, 0.2);
+      --color-discord: #1c1a14;
+
+      --font-display: "Iowan Old Style", "Bembo", "Hoefler Text", Georgia, serif;
+      --font-body: "Iowan Old Style", "Bembo", "Hoefler Text", Georgia, serif;
+      --font-sans: "Inter", "Söhne", "Helvetica Neue", system-ui, sans-serif;
+      --font-accent: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+    }
+  </style>
+
+  <link rel="stylesheet" href="../tokens/forces.css">
+  <link rel="stylesheet" href="../tokens/color.css">
+  <link rel="stylesheet" href="../tokens/typography.css">
+  <link rel="stylesheet" href="../tokens/layout.css">
+  <link rel="stylesheet" href="../tokens/motion.css">
+
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-fg);
+      font-family: var(--font-body);
+    }
+
+    /* Masthead */
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: baseline;
+      padding: var(--space-l) var(--gutter) var(--space-m);
+      border-bottom: 1px solid var(--color-border);
+      gap: var(--space-m);
+    }
+    .masthead__left,
+    .masthead__right {
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .masthead__right { text-align: right; }
+    .masthead__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      margin: 0;
+    }
+
+    /* Hero */
+    .hero {
+      padding: var(--space-3xl) var(--gutter) var(--space-2xl);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .hero__kicker {
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-m);
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0;
+      max-width: 16ch;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+    .hero__lede {
+      margin-top: var(--space-xl);
+      max-width: 60ch;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--color-fg);
+      font-style: italic;
+    }
+
+    /* The rule statement */
+    .rule {
+      padding: var(--space-xl) var(--gutter);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .rule__grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-2xl);
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+    .rule__label {
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .rule__body {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--color-fg);
+      max-width: 60ch;
+    }
+    .rule__body strong {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* Exemplar entry */
+    .entry {
+      padding: var(--space-2xl) var(--gutter);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .entry__grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-2xl);
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+    .entry__meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+    }
+    .entry__num {
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .entry__category {
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .entry__attribution {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--color-muted);
+    }
+    .entry__attribution strong {
+      color: var(--color-fg);
+      display: block;
+      font-weight: 600;
+    }
+    .entry__title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin: 0 0 var(--space-l);
+    }
+    .entry__annotation {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--color-fg);
+      max-width: 62ch;
+      margin-bottom: var(--space-m);
+    }
+    .entry__annotation + .entry__annotation {
+      margin-top: 0;
+    }
+    .entry__annotation em {
+      color: var(--color-accent);
+    }
+    .entry__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-m);
+      margin-top: var(--space-l);
+      padding-top: var(--space-m);
+      border-top: 1px solid var(--color-border);
+      font-family: var(--font-accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .entry__links a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-accent);
+      padding-bottom: 2px;
+      transition: opacity 200ms var(--ease-out);
+    }
+    .entry__links a:hover { opacity: 0.6; }
+    .entry__links span {
+      color: var(--color-muted);
+      border-bottom: 1px solid transparent;
+    }
+
+    /* Persona tag — small editorial detail */
+    .entry__persona {
+      display: inline-block;
+      font-family: var(--font-accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-bg);
+      background: var(--color-fg);
+      padding: 4px 10px;
+      margin-top: var(--space-s);
+      align-self: flex-start;
+    }
+
+    /* DISCORD — Weingart-mode entry for Saks 2007 */
+    .entry--discord {
+      background: var(--color-discord);
+      color: var(--color-bg);
+      padding: var(--space-3xl) var(--gutter);
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .entry--discord .entry__num { color: var(--color-accent); }
+    .entry--discord .entry__category,
+    .entry--discord .entry__attribution,
+    .entry--discord .entry__annotation {
+      color: rgba(244, 238, 220, 0.75);
+    }
+    .entry--discord .entry__attribution strong { color: var(--color-bg); }
+    .entry--discord .entry__title {
+      color: var(--color-bg);
+    }
+    .entry--discord .entry__title em {
+      color: var(--color-accent);
+      font-style: italic;
+    }
+    .entry--discord .entry__annotation { color: var(--color-bg); }
+    .entry--discord .entry__annotation em { color: var(--color-accent); }
+    .entry--discord .entry__links {
+      border-top-color: rgba(244, 238, 220, 0.2);
+    }
+    .entry--discord .entry__links a {
+      color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+    }
+    .entry--discord .entry__persona {
+      background: var(--color-accent);
+      color: var(--color-fg);
+    }
+    .entry--discord::before {
+      content: "64 SQUARES / 1 SOURCE";
+      position: absolute;
+      top: 20%;
+      right: -4%;
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 12vw, 12rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: rgba(168, 84, 58, 0.15);
+      transform: rotate(-7deg);
+      pointer-events: none;
+      z-index: 0;
+      line-height: 0.9;
+      white-space: nowrap;
+    }
+    .entry--discord .entry__grid { position: relative; z-index: 1; }
+
+    /* Roadmap / how to contribute */
+    .footer-section {
+      padding: var(--space-2xl) var(--gutter);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-subtle);
+    }
+    .footer-section__grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-2xl);
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+    .footer-section__label {
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .footer-section ul {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--color-fg);
+      padding-left: 1.2em;
+      margin: 0;
+    }
+    .footer-section li { margin-bottom: var(--space-2xs); }
+    .footer-section li em { color: var(--color-accent); font-style: normal; font-weight: 600; }
+
+    /* Signoff */
+    .signoff {
+      padding: var(--space-l) var(--gutter);
+      text-align: center;
+      font-family: var(--font-accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .signoff a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-accent);
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .rule__grid,
+      .entry__grid,
+      .footer-section__grid { grid-template-columns: 1fr; gap: var(--space-m); }
+      .masthead { grid-template-columns: 1fr; text-align: left; }
+      .masthead__right { text-align: left; }
+      .entry--discord::before { font-size: 4rem; opacity: 0.2; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <span class="masthead__left">Controlled Chaos PRO</span>
+    <h1 class="masthead__title">The archive</h1>
+    <span class="masthead__right">Issue I · 2026</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero__kicker m-reveal">An annotated set of references</p>
+    <h2 class="hero__title m-reveal">
+      Inspiration.<br>
+      <em>Not menu.</em>
+    </h2>
+    <p class="hero__lede m-reveal">
+      Four pieces of work. Four annotations. Four stances on what "award-level" means in 2026. The gallery exists to be studied, not copied — its purpose is to raise the floor of every future output that reads it, not to be matched.
+    </p>
+  </section>
+
+  <!-- THE RULE -->
+  <section class="rule">
+    <div class="rule__grid">
+      <p class="rule__label m-reveal">The rule</p>
+      <div class="rule__body m-reveal">
+        <p>
+          Every exemplar is analyzed along four axes — <strong>palette</strong>, <strong>layout</strong>, <strong>motion</strong>, <strong>type</strong> — with explicit annotation of <strong>what to carry forward</strong> and <strong>what NOT to carry forward</strong>. The skill's quality gate compares any generated output against this archive and rejects when similarity exceeds 0.7 on any axis.
+        </p>
+        <p style="margin-top: var(--space-s);">
+          In practice: if your output looks like any of the work below, regenerate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRY 01 — ClawCamp -->
+  <article class="entry">
+    <div class="entry__grid">
+      <div class="entry__meta m-reveal">
+        <span class="entry__num">No. 01</span>
+        <span class="entry__category">Presentation · Live deck</span>
+        <p class="entry__attribution">
+          <strong>Vibe Coding Nights · ClawCamp</strong>
+          Rayyan Zahid &amp; Michalis Vasileiadis<br>
+          San Francisco, April 2026
+        </p>
+        <span class="entry__persona">Weingart-adjacent hybrid</span>
+      </div>
+
+      <div class="m-reveal">
+        <h3 class="entry__title">A 48-slide deck that choreographs <em>ember particles</em> across a room.</h3>
+        <p class="entry__annotation">
+          The strongest original move is the <em>two-phase motion architecture</em> — embers drift, converge to focal targets (~1900ms), dwell, then optionally fracture outward. Wave/cohesion timing: each particle's delay is <code>index × 18ms</code>, creating visual rhythm per-particle rather than group-simultaneous. Data-attribute-driven motion config means no JS tuning required.
+        </p>
+        <p class="entry__annotation">
+          The palette ( <em>blaze</em> amber on charcoal ) was right for this subject — fire, claws, heat — but is <strong>not portable</strong>. PRO must derive per-run, not pick from v1's named moods.
+        </p>
+        <nav class="entry__links">
+          <a href="./clawcamp.md">Full analysis →</a>
+          <span>Live deck: internal (Vibe Coding Nights April 2026)</span>
+        </nav>
+      </div>
+    </div>
+  </article>
+
+  <!-- ENTRY 02 — Maxima Therapy -->
+  <article class="entry">
+    <div class="entry__grid">
+      <div class="entry__meta m-reveal">
+        <span class="entry__num">No. 02</span>
+        <span class="entry__category">Therapist site · Cinematic scroll</span>
+        <p class="entry__attribution">
+          <strong>Maxima Therapy</strong>
+          Louis Paquet<br>
+          React + GSAP + Matter.js<br>
+          2026
+        </p>
+        <span class="entry__persona">Saville-adjacent, punctuating</span>
+      </div>
+
+      <div class="m-reveal">
+        <h3 class="entry__title">A 50-point <em>physics rope</em> as the page's load-bearing signature.</h3>
+        <p class="entry__annotation">
+          The one-signature-motion-move rule in practice. Matter.js-driven rope, draggable, ripple propagates along the line — and nothing else on the page competes. Every other motion beat is scroll-scrubbed restraint. This is what "ONE signature, everything else utility" looks like when a studio commits to it.
+        </p>
+        <p class="entry__annotation">
+          PRO carries forward <em>the rule</em>, not the rope. Every subject needs its own load-bearing physics moment — or none at all.
+        </p>
+        <nav class="entry__links">
+          <a href="./maxima-therapy.md">Full analysis →</a>
+          <a href="https://maxima-therapy.com" target="_blank" rel="noopener">Live site ↗</a>
+          <a href="https://tympanus.net/codrops/2026/04/06/building-the-maxima-therapy-website-react-gsap-and-dabbling-with-ai/" target="_blank" rel="noopener">Codrops build notes ↗</a>
+        </nav>
+      </div>
+    </div>
+  </article>
+
+  <!-- ENTRY 03 — Lando Norris -->
+  <article class="entry">
+    <div class="entry__grid">
+      <div class="entry__meta m-reveal">
+        <span class="entry__num">No. 03</span>
+        <span class="entry__category">Driver portfolio · Awwwards SOTY 2025</span>
+        <p class="entry__attribution">
+          <strong>Lando Norris</strong>
+          OFF+BRAND (studio)<br>
+          2025
+        </p>
+        <span class="entry__persona">Scher-leading, Bierut framing</span>
+      </div>
+
+      <div class="m-reveal">
+        <h3 class="entry__title">A <em>two-tone discipline</em> with one loud accent reserved like ammunition.</h3>
+        <p class="entry__annotation">
+          Off-white, charcoal, and a single lime green that appears only on interactive moments and one or two brand-payoff beats. Every other surface is quiet. The single loud note becomes an event — which is the entire argument against Tailwind-default accent peppering.
+        </p>
+        <p class="entry__annotation">
+          Each major section <em>shifts</em> the palette (race → lime, portrait → black, career → silver-on-navy), matching the chaptered nature of an F1 career. The scroll feels like turning magazine pages. Chromatic section shifts, done right.
+        </p>
+        <nav class="entry__links">
+          <a href="./lando-norris.md">Full analysis →</a>
+          <a href="https://landonorris.com" target="_blank" rel="noopener">Live site ↗</a>
+          <a href="https://www.awwwards.com/annual-awards-2025/site-of-the-year" target="_blank" rel="noopener">Awwwards SOTY ↗</a>
+        </nav>
+      </div>
+    </div>
+  </article>
+
+  <!-- ENTRY 04 — Saks 2007 (DISCORD — the one Weingart-mode entry) -->
+  <article class="entry entry--discord">
+    <div class="entry__grid">
+      <div class="entry__meta m-reveal">
+        <span class="entry__num">No. 04</span>
+        <span class="entry__category">Rebrand · 2007 · Pentagram</span>
+        <p class="entry__attribution">
+          <strong>Saks Fifth Avenue</strong>
+          Michael Bierut, Pentagram<br>
+          Based on Massimo Vignelli's<br>
+          1973 script
+        </p>
+        <span class="entry__persona">The Bierut canon</span>
+      </div>
+
+      <div class="m-reveal">
+        <h3 class="entry__title">
+          One calligraphic script, split into <em>64 squares</em>, used as a generative identity.
+        </h3>
+        <p class="entry__annotation">
+          Bierut took Vignelli's 1973 Saks wordmark and decomposed it into a 64-square grid. Every shopping bag, sign, label, and ad was composed from a different fragment combination — sometimes rotated, sometimes scaled. One source, 64 pieces, effectively infinite identity. The constraint produced coherence; the decomposition produced variety.
+        </p>
+        <p class="entry__annotation">
+          <em>This is the canonical example of adaptive reuse.</em> The Bierut persona in CC-PRO derives its entire method from this work: audit heritage, find the fragment with good bones, deconstruct, recombine, assert the present.
+        </p>
+        <nav class="entry__links">
+          <a href="./saks-2007.md">Full analysis →</a>
+          <a href="https://www.pentagram.com/work/saks-fifth-avenue" target="_blank" rel="noopener">Pentagram case study ↗</a>
+        </nav>
+      </div>
+    </div>
+  </article>
+
+  <!-- ROADMAP -->
+  <section class="footer-section">
+    <div class="footer-section__grid">
+      <p class="footer-section__label m-reveal">Coming to the archive</p>
+      <div class="m-reveal">
+        <ul>
+          <li><em>Experimental Jetset · Stedelijk Museum</em> — typography-as-object, Experimental Jetset's signature method</li>
+          <li><em>Peter Saville · Blue Monday (FAC 73)</em> — form-as-violation, when the sleeve shape IS the argument</li>
+          <li><em>Paula Scher · Public Theater</em> — civic typography at its origin, the Scher persona's canon</li>
+          <li><em>Weingart · Typografische Monatsblätter covers</em> — the Basel School's web-adjacent legacy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO CONTRIBUTE -->
+  <section class="footer-section" style="background: var(--color-bg);">
+    <div class="footer-section__grid">
+      <p class="footer-section__label m-reveal">Contribute an exemplar</p>
+      <div class="m-reveal">
+        <p style="font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.65; color: var(--color-fg); max-width: 60ch;">
+          The archive grows. When adding, include: source (URL, designer, year), the four-axis analysis (palette / layout / motion / type), what to carry forward, what NOT to carry forward, and which persona's method the work exemplifies. Open a pull request on <a href="https://github.com/RayyanZahid/controlled-chaos-pro" style="color: var(--color-accent);">GitHub</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNOFF -->
+  <footer class="signoff">
+    An editorial gallery for <a href="../SKILL.md">Controlled Chaos PRO</a> · Saville-mode · 2026
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('--visible');
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.m-reveal, .m-stagger, .m-clip-up, .m-scale-in')
+      .forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
