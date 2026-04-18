@@ -31,6 +31,8 @@ Before anything else, answer:
 - **What cultural/historical anchors** exist in the subject's world? (A concept, artifact, era, painting, album, document, person)
 - **What output context** — standalone web page, presentation deck, landing hero, long-form editorial?
 
+If the incoming brief is thin — an adjective pile, a menu pick from another design system, a pre-baked *"make it like X,"* or a vague gesture — ask ONE question (see `composition-engine.md` Phase 1a for the exact phrasing) and merge the answer before proceeding. Never a gauntlet. One question, or none.
+
 If you skip this step, you're about to write generic output. Stop and answer.
 
 ### Step 2 — Select the persona

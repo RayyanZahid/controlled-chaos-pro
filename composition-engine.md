@@ -13,21 +13,56 @@ Read `SKILL.md` first for the high-level workflow. This document describes what 
 - Output context (web page, presentation deck, landing hero, long-form)
 - Optional: user-specified persona, user-specified forces overrides
 
-**Actions:**
+#### Phase 1a — Brief sufficiency check (before parsing)
+
+Thin briefs produce thin output. Before parsing, evaluate whether the incoming brief gives you enough to generate from. Do NOT run this as a gauntlet — most briefs pass this check silently and proceed.
+
+**The brief proceeds directly if ANY of these hold:**
+
+1. **It names a specific reference object** — a painting, record, era, building, product, photograph, person, cultural artifact. *"Like Peter Saville's Factory sleeves"*; *"built like a Braun T3"*; *"the aesthetic of late-1970s Manchester."* One named thing is enough.
+2. **It describes a functional output** — a tool, dashboard, login, settings page, admin surface. Functional briefs don't need anchors; they need discipline (Rams handles this).
+3. **It contains a declarative proposition** — a sentence the reader should leave tattooed. *"Every page is one of one."* Scher can work from this alone.
+4. **It's already prose-rich** — more than 3 concrete nouns AND at least one sensory anchor AND stance-bearing language.
+
+**The brief is THIN if the only content is:**
+
+- **Adjective pile** — *"modern, clean, bold, innovative, approachable"*
+- **Menu pick** — *"brutalist with the blaze palette, kinetic voice"*
+- **Pre-baked solution** — *"make it like Stripe"*, *"like Linear"*
+- **Vague gesture** — *"something beautiful about memory"*
+
+(Tells catalogued in `prompting/anti-patterns.md`.)
+
+**When the brief is thin: ask ONE question. Never more than one.** Match the question to the failure tell:
+
+- **Adjective pile / vague gesture** → *"Tell me one specific thing this subject already looks like — a painting, a record, a building, a product, a photograph, a moment. Something concrete. The reference will do the work the adjectives can't."*
+- **Menu pick** → *"You've picked from a menu. Rewrite the brief as one paragraph of prose: what is the subject about, and what existing thing in the world is it already like?"*
+- **Pre-baked solution** → *"You've referenced another product. What about YOUR subject — what is it on its own terms? One paragraph."*
+
+**After one question:**
+- Merge the user's answer into the brief.
+- If the answer unlocks an anchor, a proposition, or a reference → proceed to Phase 1b parsing.
+- If the user says *"I don't know any reference"* or stays vague → default persona to Scher (if the subject has a declarative proposition possible) or Rams (if the subject is functional). Do NOT ask a second question. One shot, then proceed.
+
+Point the user at `prompting.md` if they want to understand why the question was asked. Never lecture.
+
+#### Phase 1b — Parse the brief
+
 1. Extract the subject's **core proposition** in one sentence. Write it down.
-2. Identify the subject's **cultural anchors** — references, influences, historical precedents, artifacts, eras, people. List at least three.
+2. Identify the subject's **cultural anchors** — references, influences, historical precedents, artifacts, eras, people. List what's present (may be empty after intake; that's OK).
 3. Identify the subject's **emotional register** — one of: contemplative, urgent, celebratory, dissenting, functional, expressive, editorial, atmospheric.
 4. Identify the subject's **audience specificity** — general public, specialist audience, niche community, internal stakeholders. This affects persona selection.
 
 **Outputs:**
 - `subject.proposition` — one-sentence thesis
-- `subject.anchors` — array of cultural anchors
+- `subject.anchors` — array of cultural anchors (possibly empty)
 - `subject.register` — emotional register
 - `subject.audience` — specificity tier
 - `subject.context` — output context profile
+- `subject.brief_quality` — one of: `rich` | `sufficient` | `thin_accepted` (thin brief, intake ran, user chose not to provide more)
 
 **Failure modes:**
-- No anchors found → escalate: the subject is too abstract or too new for anchor-based work. Either (a) ask user for references, or (b) default to Scher (language-native) or Rams (function-first) persona.
+- Anchors empty AND proposition weak AND subject isn't functional → escalate: the brief truly does not have enough to generate from. Surface this to the user with a pointer to `prompting.md` rather than attempting a guess.
 
 ### Phase 2 — Persona selection
 
