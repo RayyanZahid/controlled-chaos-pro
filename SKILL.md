@@ -91,6 +91,20 @@ Before delivering, answer:
 
 If any answer is no, regenerate.
 
+### Step 8 — Reflection (on demand, silent by default)
+
+After delivery, stay quiet. Do not auto-surface metadata, force readouts, or explanations. The user got their output; that's enough.
+
+If the user pulls for more, five behaviors are available (full spec in `composition-engine.md` Phase 8):
+
+- **Interpretation mirror** — *"what did you understand from my brief?"*
+- **Attribution readout** — *"why this palette?"* / *"defend this decision"*
+- **Force readout** — *"show me the forces"*
+- **Taste-diff rewrites** — *"help me with this brief"* / *"give me two versions"*
+- **Force-dial re-run** — *"more warmth"* / *"less volume"* / *"tighten structure"*
+
+Match the phrasing to the behavior. Surface only what's asked. Never pile on.
+
 ## What's where
 
 | Path | Purpose |

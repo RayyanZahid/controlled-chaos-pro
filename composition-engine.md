@@ -4,7 +4,7 @@ How to actually execute the workflow. This is the spec an LLM follows when gener
 
 Read `SKILL.md` first for the high-level workflow. This document describes what happens inside each step.
 
-## The 7 phases
+## The 8 phases
 
 ### Phase 1 — Subject intake
 
@@ -213,6 +213,86 @@ The axes:
 - **Layout:** section-count, grid-system, hero-treatment similarity
 - **Motion:** category mix, signature-move similarity, timing similarity
 - **Type:** face-count, pairing-era similarity, scale-rhythm similarity
+
+### Phase 8 — Reflection (on demand)
+
+Phase 8 is silent by default. After delivery, the skill does NOT surface metadata, explanations, readouts, or follow-up prompts unless the user asks. Default flow: generate → deliver → stop. No wall of post-mortem.
+
+Five user-intent patterns activate reflection behaviors. Match the user's phrasing to the behavior; surface exactly what's asked for; do not pile on.
+
+#### 8.1 — Interpretation mirror
+
+**Triggers:** *"what did you understand from my brief?"* / *"summarize what you took from that"* / *"are we aligned?"* / *"read it back to me"*
+
+**Presentation:** a compact prose summary of Phase 1 outputs — named references, register, proposition, chosen persona, and one sentence on the forces position. Example:
+
+> *"I read this as a Saville-mode tribute to Factory Records, anchored on Fantin-Latour's Basket of Roses. Palette came from the painting; the typography pair is 1983 — Neue Haas Grotesk and Bembo. Forces land at structure 0.82, warmth 0.65, volume 0.3 — editorial, not civic. Fair?"*
+
+Always close with *"Fair?"* or equivalent. Invites correction. Doesn't demand approval.
+
+#### 8.2 — Attribution readout
+
+**Triggers:** *"why this palette?"* / *"why this type pair?"* / *"where did X come from?"* / *"why this motion choice?"* / *"defend this decision"*
+
+**Presentation:** trace the specific choice back to either (a) the brief phrase that drove it, or (b) the persona principle that required it. Cite. No hand-waving.
+
+Example exchange:
+
+> User: *"Why the cream background?"*
+> Skill: *"From your phrase 'Fantin-Latour's Basket of Roses' — the painting's canvas ground is warm cream, sampled as --color-bg. It's the anchor's actual paper, not an aesthetic choice."*
+
+Every attribution names (a) the brief fragment it descended from or (b) the persona rule it obeys. If a choice can't be attributed to either, flag it — it's probably decoration and should be reconsidered.
+
+#### 8.3 — Force readout
+
+**Triggers:** *"show me the forces"* / *"where did this land?"* / *"what's the forces profile?"*
+
+**Presentation:** the five force values with a one-sentence synthesis of what they mean together. Text format (for chat):
+
+> structure **0.82** · density **0.3** · warmth **0.65** · stillness **0.95** · volume **0.3**
+> *Rigid editorial restraint, breathing airy, warm, contemplative, whispered — Saville forces.*
+
+If the output surface supports visual rendering (the generated page itself, a companion doc), a compact radar is acceptable. In chat, use the ordered list.
+
+#### 8.4 — Taste-diff rewrites
+
+**Triggers:** *"help me with this brief"* / *"rewrite my brief"* / *"is this brief any good?"* / *"give me two versions"*
+
+**Presentation:** two rewrites of the user's incoming brief:
+
+- **Toward** — sharpened in the direction the subject already suggests. More specific reference objects, tighter stance, prose-richer. This is where the subject naturally wants to land.
+- **Against** — a deliberate counterpoint. Displaces one axis (persona, register, era, or reference category) to break predictability. This is where the subject could land if we refused the obvious read.
+
+One sentence after each explaining what it does differently. User picks; skill proceeds with the chosen rewrite.
+
+**Fingerprint logic:**
+
+- **First generation for this user**: no fingerprint exists. *Toward* sharpens the brief's natural register. *Against* moves orthogonally.
+- **After multiple generations**: *toward* matches the user's apparent aesthetic gravity (inferred from recent outputs). *Against* deliberately breaks the pattern the gallery similarity check has started to flag.
+
+Never produce only one rewrite. The two-option framing is the mechanic — it lets the user choose an axis instead of accept an answer.
+
+#### 8.5 — Force-dial re-run
+
+**Triggers:** *"more warmth"* / *"less volume"* / *"tighten structure"* / *"re-roll with more stillness"* / any phrase naming one of the five forces with a direction
+
+**Presentation:** adjust the named force by ~0.15 in the requested direction (clamped to 0–1). Re-run the composition with the new forces. Report the delta:
+
+> *"Warmth 0.3 → 0.45. Palette shifted toward earth tones; border-radius bumped up to ~7px; typography suggestions leaned more humanist."*
+
+One force at a time. Let the user drive iteration dimension-by-dimension; don't second-guess them by adjusting multiple axes at once.
+
+**Naming conflicts:** if the user says *"more warmth"* but the persona is Rams (which caps warmth low by design), acknowledge the constraint: *"Rams constrains warmth below 0.2 — pushing higher would move out of Rams-mode. Want to try it anyway, or adjust within Rams?"*
+
+---
+
+### When reflection stays silent
+
+- Immediately after delivery, with no user follow-up → silent
+- When the user's next message is about something else → silent
+- When the user reports the output is good → silent (don't explain what they already accepted)
+
+The reflection surfaces exist to be pulled, not pushed. Pushing them turns every generation into a post-mortem.
 
 ## Error states
 
