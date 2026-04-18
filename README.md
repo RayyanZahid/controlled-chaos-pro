@@ -32,6 +32,16 @@ Or invoke explicitly:
 
 > /controlled-chaos-pro
 
+## Live pages
+
+- **Root:** https://rayyanzahid.github.io/controlled-chaos-pro/
+- **Gallery · the archive:** https://rayyanzahid.github.io/controlled-chaos-pro/gallery/
+- **Saville · Factory Records tribute:** https://rayyanzahid.github.io/controlled-chaos-pro/examples/saville-test/
+- **Scher · DERIVE, DON'T DECORATE manifesto:** https://rayyanzahid.github.io/controlled-chaos-pro/examples/scher-test/
+- **Rams · CC-PRO honest product page:** https://rayyanzahid.github.io/controlled-chaos-pro/examples/rams-test/
+- **Weingart · Typografische No. 09 zine:** https://rayyanzahid.github.io/controlled-chaos-pro/examples/weingart-test/
+- **Bierut · v1 → PRO adaptive reuse:** https://rayyanzahid.github.io/controlled-chaos-pro/examples/bierut-test/
+
 ## Structure
 
 - `SKILL.md` — Claude skill entry, workflow, quality gates

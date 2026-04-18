@@ -351,5 +351,56 @@ git clone https://github.com/RayyanZahid/controlled-chaos-pro</code></pre>
     </footer>
 
   </main>
+  <nav aria-label="Archive navigation" class="archive-nav">
+    <style>
+      .archive-nav {
+        padding: 2.5rem var(--gutter, 2rem) 3rem;
+        border-top: 1px solid var(--color-border);
+      }
+      .archive-nav__label {
+        font-family: var(--font-accent, ui-monospace, monospace);
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+        margin: 0 0 1rem;
+      }
+      .archive-nav__list {
+        list-style: none; padding: 0; margin: 0;
+        display: flex; flex-wrap: wrap;
+        gap: 1rem 2.5rem;
+        font-family: var(--font-accent, ui-monospace, monospace);
+        font-size: 0.73rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .archive-nav__list a {
+        color: var(--color-muted);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+        transition: color 200ms ease-out, border-color 200ms ease-out;
+      }
+      .archive-nav__list a:hover {
+        color: var(--color-accent);
+        border-bottom-color: var(--color-accent);
+      }
+      .archive-nav__list .current {
+        color: var(--color-fg);
+        border-bottom: 1px solid var(--color-fg);
+        pointer-events: none;
+      }
+    </style>
+    <p class="archive-nav__label">Other pages in the archive</p>
+    <ul class="archive-nav__list">
+      <li><a href="../../gallery/index.html">Gallery</a></li>
+      <li><a href="../saville-test/index.html">Saville · Factory Records</a></li>
+      <li><a href="../scher-test/index.html">Scher · Manifesto</a></li>
+      <li><a href="./index.html" class="current">Rams · Product page</a></li>
+      <li><a href="../weingart-test/index.html">Weingart · Typografische</a></li>
+      <li><a href="../bierut-test/index.html">Bierut · v1 → PRO</a></li>
+    </ul>
+  </nav>
+
 </body>
 </html>
