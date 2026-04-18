@@ -94,12 +94,17 @@ If any answer is no, regenerate.
 | Path | Purpose |
 |---|---|
 | `axioms.md` | Five content-operations — read first |
+| `prompting.md` | How to write a brief that generates. **Read before writing your first prompt.** |
+| `prompting/exemplars.md` | Ten paired briefs — bad vs. good, one pair per persona |
+| `prompting/anti-patterns.md` | Eight common ways a brief kills itself |
 | `personas/*.md` | Authorial method library |
 | `principles/motion.md` | Four motion categories + calibration |
 | `principles/microfeatures.md` | Catalogued microfeatures (pick ONE) |
 | `principles/photography.md` | Imagery decision tree + treatment |
+| `composition-engine.md` | The 7-phase execution spec |
 | `tokens/*.css` | CSS primitives (import all five) |
 | `gallery/*.md` | Annotated exemplars — **inspiration, not menu** |
+| `gallery/index.html` | The visual archive, Saville-mode |
 | `examples/` | Validation outputs |
 
 ## Token import (in generated HTML `<head>`)

@@ -36,11 +36,13 @@ Or invoke explicitly:
 
 - `SKILL.md` — Claude skill entry, workflow, quality gates
 - `axioms.md` — Five content-operations (read first)
+- `prompting.md` — How to write a brief that generates (read this before your first prompt)
+- `prompting/` — Paired exemplars + anti-patterns catalog
 - `composition-engine.md` — The 7-phase execution spec (what actually runs when a page is generated)
 - `personas/` — Authorial method library (Saville, Scher, Rams, Weingart, Bierut)
 - `principles/` — Motion, microfeatures, photography
 - `tokens/` — CSS primitives (forces, color, typography, layout, motion)
-- `gallery/` — Annotated exemplars (inspiration, **not** menu)
+- `gallery/` — Annotated exemplars + visual archive (inspiration, **not** menu)
 - `examples/` — Validation outputs, one per persona
 
 ## The five personas (v0.1)
