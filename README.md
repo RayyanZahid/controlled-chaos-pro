@@ -69,6 +69,10 @@ Each persona is a **method**, not an aesthetic. Picking Saville means following 
 
 MIT.
 
+## Roadmap
+
+See [`ROADMAP.md`](./ROADMAP.md) for what's shipped, what's planned for v0.2, and what's parked.
+
 ## Credits
 
 Designed by [Rayyan Zahid](https://www.linkedin.com/in/rayyanzahid). Philosophical debt to Peter Saville, Paula Scher, Dieter Rams, Wolfgang Weingart, Michael Bierut. Built with Claude.
