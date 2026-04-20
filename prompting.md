@@ -48,6 +48,24 @@ Use structured prompts when:
 
 For everything this skill generates — pages, decks, heroes, editorial surfaces, manifestos — prose is the right register.
 
+## Editorial vs. commercial
+
+A brief's prose-richness controls how vivid the output is. A brief's **voice register** controls whether the output sounds like an essay or a quote.
+
+Most CC-PRO briefs are editorial — you're writing a tribute, a manifesto, a brand page, an atmospheric surface. The voice of the brief is the voice of the output: considered, specific, anchored.
+
+Some briefs are **commercial** — pitch decks, sales pages, quotes, investor one-pagers, event proposals. These surfaces are read by someone who has ten minutes and a checkbook. Literary voice in that seat reads as evasive or amateur. When your brief is for a commercial surface, say so directly:
+
+> *"Pitch deck for a private-venue rental business. Four tiers, clear pricing, client-facing. Commercial register — no narrative framing, no romantic tier descriptions."*
+
+Or just name the output form:
+
+> *"A one-pager quote for a $50K event buyout."*
+
+Either triggers the skill's commercial register. You can still write the brief itself in prose — ekphrasis works for commercial surfaces too (*"the feeling of a well-priced menu handed to you by a host who respects your time"*) — but the output will be fact-first, direct-ask, and typographically closer to a document than an essay.
+
+See `principles/register.md` for the full prohibition/requirement list and before/after examples from real pitch iteration.
+
 ## What to read next
 
 - `prompting/exemplars.md` — ten paired briefs. Bad vs. good, two per persona.

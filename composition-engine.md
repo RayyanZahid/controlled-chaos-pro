@@ -52,11 +52,18 @@ Point the user at `prompting.md` if they want to understand why the question was
 2. Identify the subject's **cultural anchors** — references, influences, historical precedents, artifacts, eras, people. List what's present (may be empty after intake; that's OK).
 3. Identify the subject's **emotional register** — one of: contemplative, urgent, celebratory, dissenting, functional, expressive, editorial, atmospheric.
 4. Identify the subject's **audience specificity** — general public, specialist audience, niche community, internal stakeholders. This affects persona selection.
+5. Identify the subject's **voice register** — editorial (default) or commercial. See `principles/register.md`. Commercial is triggered by:
+   - Brief contains *"pitch," "quote," "proposal," "client-facing," "B2B," "sales deck," "investor,"* or *"one-pager"*
+   - Output includes pricing, capacities, dates, or SLAs
+   - Reader is explicitly deciding (checkbook, calendar, budget)
+   - User declared `register: commercial` directly
+   Otherwise default to editorial. When ambiguous (e.g., a brand page that *might* be pitching investors), ask ONE question during intake: *"Is this a read-for-pleasure surface or a decide-and-act surface?"*
 
 **Outputs:**
 - `subject.proposition` — one-sentence thesis
 - `subject.anchors` — array of cultural anchors (possibly empty)
-- `subject.register` — emotional register
+- `subject.register` — emotional register (contemplative, urgent, etc.)
+- `subject.voice` — voice register (`editorial` | `commercial`)
 - `subject.audience` — specificity tier
 - `subject.context` — output context profile
 - `subject.brief_quality` — one of: `rich` | `sufficient` | `thin_accepted` (thin brief, intake ran, user chose not to provide more)
@@ -84,6 +91,8 @@ else:
 ```
 
 **User override:** if the user explicitly specifies a persona, use it. If the user's choice conflicts with the algorithm, proceed with user's choice but note the tension in comments.
+
+**Commercial-register default:** when `subject.voice == commercial` AND the algorithm returns Saville as fallback (no strong anchor), prefer **Rams** instead. Rams's method IS commercial register rendered visually; Saville + commercial works but requires a strong anchor to earn its cultural framing. No anchor + commercial = Rams.
 
 **Outputs:**
 - `persona` — the selected method
@@ -141,6 +150,21 @@ Set `--force-*` CSS variables on `<html>` inline. Typical ranges per persona:
 | Bierut | 0.75–0.9 | 0.4–0.6 | 0.3–0.5 | 0.55–0.75 | 0.4–0.6 |
 
 Adjust within the persona's range based on subject register.
+
+#### Phase 3a — Register application
+
+Once persona and aesthetic DNA are derived, apply the voice register. Register is orthogonal — persona sets the designer's method, register sets the copy's tone.
+
+**If `subject.voice == editorial`** — default behavior, no further action. Let the persona's native voice speak. Saville is essay-adjacent; Scher is civic-declarative; Rams is industrially neutral; Weingart is expressive-rigorous; Bierut is narrative-heritage.
+
+**If `subject.voice == commercial`** — apply the prohibitions and requirements from `principles/register.md`:
+
+- **Copy prohibitions:** no meta-commentary about the deck's own structure; no narrative framing of the reader's experience; no romantic/poetic phrasing; no self-undercutting tier language; no artificial curation when the real answer is "all"; no framing-as-claim.
+- **Copy requirements:** fact-first sentences; direct imperative asks; every tier described on its own terms; uncapped optionality where real; plural-noun customer claims; pricing stated as a number without softening.
+- **Typographic shifts:** section eyebrows become numbered headers (01, 02, 03) or all-caps sans at body size, not small-caps editorial; captions become mono or plain sans, not italic serif; pull-quotes become callout boxes with a stat + one-line claim, not pulled italic; running heads become document metadata (page N of M, client, date), not editorial eyebrows.
+- **Forces nudge:** if forces landed in the persona's airy/warm/editorial zone, shift them toward higher structure (+0.1), lower warmth (-0.15), and higher stillness (+0.1). Commercial compositions sit closer to Rams on the forces map regardless of persona.
+
+The shift is **additive**, not replacement. Saville + commercial still derives its palette from the cultural anchor — but the copy doesn't narrate the anchor's meaning; the anchor frames the numbers. Scher + commercial still uses civic-scale type — but the phrase is an offer, not a thesis.
 
 ### Phase 4 — Composition
 
@@ -204,7 +228,25 @@ Before delivering, run the checklist:
 [ ] Responsive down to 480px
 [ ] All 5 axioms pass
 [ ] Output distinct from last 3 CC-PRO outputs on palette/layout/motion/type axes
+[ ] Register matches subject.voice (see register scan below)
 ```
+
+**Register scan (only if commercial):**
+
+Search the generated copy for failure signals. Any hit means the sentence drifted back toward editorial — rewrite it fact-first.
+
+- Phrases: *"a transaction,"* *"a relationship,"* *"not a pitch,"* *"test-drive,"* *"low-friction,"* *"starting at,"* *"as low as,"* *"carefully chosen,"* *"curated,"* *"carries you,"* *"chosen hero-first,"* *"an option, not"*
+- Structure narration: any sentence that describes what the deck is doing (*"we don't need a big process,"* *"ordered hero-first"*)
+- Reader-experience narration: any sentence that narrates what the reader is seeing or feeling (*"you chose,"* *"the staircase carries,"* *"descent into"*)
+- Softened numbers: any price, date, or capacity wrapped in *"from,"* *"starting,"* *"up to,"* *"depending on"* when a fixed number is actually available
+
+**Register scan (only if editorial):**
+
+Inverse check — has the voice flattened into spec-sheet?
+
+- Is there at least one sentence of essay-grade prose?
+- Do captions and eyebrows carry editorial furniture (italic serif, small-caps), or have they defaulted to mono?
+- If the composition is tribute/manifesto/atmospheric and reads like a product spec, the register drifted; rewrite toward the persona's native voice.
 
 **Similarity reject:** if any of the last 3 outputs matches this output >0.7 on any axis, regenerate.
 
