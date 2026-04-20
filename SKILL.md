@@ -47,6 +47,21 @@ Read `personas/*.md`. Each persona is a **method**, not an aesthetic:
 
 Pick the persona whose **method** matches the subject's need. NOT the one whose aesthetic you prefer. A design-system page might want Rams (reductive) even if Weingart's aesthetic is cooler.
 
+### Step 2a — Select the register
+
+Persona is the designer's method. Register is the writing voice. They are orthogonal.
+
+Two registers exist:
+
+- **Editorial** (default) — essay-adjacent. Used for subjects whose job is to move the reader: manifestos, tributes, exhibits, brand pages, atmospheric surfaces.
+- **Commercial** — fact-first, decision-oriented. Used for subjects whose job is to close a transaction: pitch decks, quotes, sales pages, investor one-pagers, event proposals.
+
+**Set `register: commercial`** when the brief names *"pitch," "quote," "proposal," "client-facing," "B2B,"* or *"sales deck,"* OR when the output includes pricing, capacities, dates, or SLAs. Otherwise editorial is the default — no declaration needed.
+
+Read `principles/register.md` for the full prohibition list (meta-commentary, narrative framing, romantic phrasing, self-undercutting tier language, artificial curation, framing-as-claim) and requirement list (fact-first, direct asks, preserve tier value, uncapped optionality, plural customer claims, pricing without apology).
+
+Register modifies copy and some typographic furniture (eyebrows, captions, pull-quotes, running heads). It does not change persona. **Rams + commercial is the default for pitch surfaces** — Rams's method IS commercial register rendered visually. Other persona + commercial combinations work when the subject has an anchor (Saville), a declarative proposition (Scher), a heritage (Bierut), or a design-literate audience (Weingart).
+
 ### Step 3 — Derive the aesthetic DNA
 
 Per the chosen persona's method, derive:
@@ -88,6 +103,7 @@ Before delivering, answer:
 - [ ] Is there exactly **one** signature microfeature?
 - [ ] Does it pass `prefers-reduced-motion`?
 - [ ] Held next to three prior PRO outputs — is it recognizably its own thing, or "CC-PRO default"?
+- [ ] **Register check** — if commercial, scan the copy for failure signals: *"a transaction,"* *"a relationship,"* *"not a pitch,"* *"test-drive,"* *"low-friction,"* *"starting at,"* *"carefully chosen,"* any sentence narrating the deck's structure or the reader's journey. Any hit = rewrite that sentence fact-first. If editorial, the check is inverted — is the voice essay-worthy, or has it drifted into spec-sheet flatness?
 
 If any answer is no, regenerate.
 
@@ -114,6 +130,7 @@ Match the phrasing to the behavior. Surface only what's asked. Never pile on.
 | `prompting/exemplars.md` | Ten paired briefs — bad vs. good, one pair per persona |
 | `prompting/anti-patterns.md` | Eight common ways a brief kills itself |
 | `personas/*.md` | Authorial method library |
+| `principles/register.md` | Editorial vs. commercial voice — orthogonal to persona |
 | `principles/motion.md` | Four motion categories + calibration |
 | `principles/microfeatures.md` | Catalogued microfeatures (pick ONE) |
 | `principles/photography.md` | Imagery decision tree + treatment |
@@ -154,6 +171,7 @@ These values derive spacing, radius, tracking, motion duration, border weight �
 - **Microfeature pileup** — cursor trail + grain + chromatic aberration + parallax = noise
 - **AI-default imagery** — using raw Midjourney output without art direction
 - **Voice stacking** — using three typefaces when two would carry
+- **Register mismatch** — writing editorial copy for a pitch deck (narrating the reader's journey, romanticizing the offer, capping optionality); or writing commercial copy for a tribute page (stripping the feeling the subject needs to land)
 
 ## The test
 

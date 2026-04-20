@@ -53,3 +53,13 @@ The craft-read comes from restraint. Three microfeatures is a template; one is a
 The axioms are the floor. The personas are the ceiling. The floor is universal; the ceiling changes per run.
 
 A Saville-mode composition and a Weingart-mode composition look nothing alike — but both pass all five axioms, or neither ships.
+
+## Corollary — The Register
+
+Persona is the designer's method. Register is the writing voice. They are orthogonal, and every composition carries both.
+
+Editorial register is the default. It is the essay-adjacent voice that pairs naturally with Saville tributes, Scher manifestos, Bierut heritage work. Commercial register exists for decide-and-act surfaces — pitch decks, quotes, proposals — where literary voice reads as evasive.
+
+Commercial register is not a lesser register. It is a discipline: fact-first, direct asks, preserved tier value, uncapped optionality, pricing without apology. The failure mode is drift — writing an essay when the reader is buying. See `principles/register.md`.
+
+Rams + commercial is the default for pitch surfaces. Other persona + commercial pairings work when the subject provides the persona's trigger (anchor for Saville, declarative proposition for Scher, heritage for Bierut, design-literate audience for Weingart).

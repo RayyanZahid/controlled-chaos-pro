@@ -50,7 +50,7 @@ Or invoke explicitly:
 - `prompting/` — Paired exemplars + anti-patterns catalog
 - `composition-engine.md` — The 7-phase execution spec (what actually runs when a page is generated)
 - `personas/` — Authorial method library (Saville, Scher, Rams, Weingart, Bierut)
-- `principles/` — Motion, microfeatures, photography
+- `principles/` — Motion, microfeatures, photography, register (editorial vs. commercial voice)
 - `tokens/` — CSS primitives (forces, color, typography, layout, motion)
 - `gallery/` — Annotated exemplars + visual archive (inspiration, **not** menu)
 - `examples/` — Validation outputs, one per persona
